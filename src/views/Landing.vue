@@ -14,12 +14,6 @@
               impression.
             </h4>
             <br />
-            <md-button
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-              class="md-success md-lg"
-              target="_blank"
-              ><i class="fas fa-play"></i> Watch video</md-button
-            >
           </div>
         </div>
       </div>
