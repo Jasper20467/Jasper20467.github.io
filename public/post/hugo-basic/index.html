@@ -199,9 +199,61 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hugo-介紹">Hugo 介紹</a></li>
+    <li><a href="#hugo-cli">Hugo CLI</a></li>
+  </ul>
+</nav>
                 
-                
+                <h1 id="hugo-介紹">Hugo 介紹</h1>
+<hr>
+<p>Hugo 是一套生成靜態頁面的工具(static site generator)。利用 Markdown 將內容跟樣式外觀完整分開，再利用生成的靜態網頁直接發佈到 server 上。般來說 markdown 語法對應樣式種類會比較少，但是相對的也是幫助在寫作的時候專注在內容而不是樣式上</p>
+<p>優點</p>
+<ul>
+<li>使用Markdown 書寫，且兼容css/html</li>
+<li>轉換成網頁的速度極快</li>
+<li>提供模組並且簡單的客製化</li>
+<li>多元的版型可以使用</li>
+<li>靜態網頁的免費空間好找</li>
+</ul>
+<p>缺點：</p>
+<ul>
+<li>靜態網頁生成，沒有互動性</li>
+<li>進階的功能需要高度程式能力</li>
+<li>模板外的模組，需要自己增建</li>
+</ul>
+<p>可參考 <a href="https://gohugo.io/getting-started/installing/">官方文件</a> 安裝</p>
+<h1 id="hugo-cli">Hugo CLI</h1>
+<hr>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>語法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>建立新專案</td>
+<td><code>hugo new site myblog</code></td>
+</tr>
+<tr>
+<td>輸出靜態文件</td>
+<td><code>hugo</code></td>
+</tr>
+<tr>
+<td>本地編譯</td>
+<td><code>hugo server -D</code></td>
+</tr>
+<tr>
+<td>新增文章</td>
+<td><code>hugo new posts/my-first-post.md</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+
 
                 <hr>
                 <ul class="pager">
@@ -211,11 +263,6 @@
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/post/hugo-advance/" data-toggle="tooltip" data-placement="top" title="Hugo Advance">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
@@ -245,10 +292,6 @@
                         </a>
                         
                         
-                        
-                        <a href="/tags/hugo" title="hugo">
-                            hugo
-                        </a>
                         
                         
                     </div>
