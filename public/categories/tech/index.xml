@@ -16,5 +16,23 @@
       <description>Hugo 介紹 Hugo 是一套生成靜態頁面的工具(static site generator)。利用 Markdown 將內容跟樣式外觀完整分開，再利用生成的靜態網頁直接發佈到 server 上</description>
     </item>
     
+    <item>
+      <title>Python Web Dash (2)</title>
+      <link>/post/python-dash-2/</link>
+      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/python-dash-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python Web Dash (1)</title>
+      <link>/post/python-dash-1/</link>
+      <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/python-dash-1/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
