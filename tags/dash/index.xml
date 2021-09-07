@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dash on Jasper Blog</title>
+    <link>/tags/dash/</link>
+    <description>Recent content in Dash on Jasper Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/dash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Web Dash (2)</title>
+      <link>/post/python-dash-2/</link>
+      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/python-dash-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python Web Dash (1)</title>
+      <link>/post/python-dash-1/</link>
+      <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/python-dash-1/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
