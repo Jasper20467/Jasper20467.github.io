@@ -6,7 +6,43 @@
     <description>Recent content in Python on Jasper Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django - 5 Migrations</title>
+      <link>/post/django-5/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/django-5/</guid>
+      <description>Models 的概念 建立一個可重複性使用，且明確的後端資料的存取/處理行為 實現DRY(Don’t repeat yourself) 在APP中建立一個新的Modle 修改setting.</description>
+    </item>
+    
+    <item>
+      <title>Django - 4 Introduce django urls</title>
+      <link>/post/django-4/</link>
+      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/django-4/</guid>
+      <description>Django URLs 說明 App在建立完成後，需要建立一個urls.py 並將使urls.py 引入到Web的專案中。 在此專案範例中，HelloWorld為網頁設</description>
+    </item>
+    
+    <item>
+      <title>Django - 3 Create initial project</title>
+      <link>/post/django-3/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/django-3/</guid>
+      <description>初始專案建立 透過Django -1 設定 建立一個Django專案資料夾 建立 app 在manage.py 同資料夾層別下執行py manage.py startapp polls ，此條指令可建立一個A</description>
+    </item>
+    
+    <item>
+      <title>Django - 2 Run Server</title>
+      <link>/post/django-2/</link>
+      <pubDate>Wed, 02 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/django-2/</guid>
+      <description>發布網頁 CMD將路徑指向Django project 的根資料夾，執行 py manage.py runserver py manage.py runserver 預設發布路徑為 http://127.0.0.1:8000/ Python可透過Django套件，開發一個輕量級的web</description>
+    </item>
+    
     <item>
       <title>Django - 1 Environment Setup</title>
       <link>/post/django-1/</link>
@@ -14,15 +50,6 @@
       
       <guid>/post/django-1/</guid>
       <description>安裝Python後，再安裝Django套件 安裝django套件 pip install django==2.1.3 環境變數設定 安裝完成後透過以下cmd確認功能是否正常 &amp;gt;&amp;gt;&amp;gt; import django &amp;gt;&amp;gt;&amp;gt; print(django.get_version()) 2.1 使用Dj</description>
-    </item>
-    
-    <item>
-      <title>Django - 2 Run Server</title>
-      <link>/post/django-2/</link>
-      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/django-2/</guid>
-      <description>發布網頁 CMD將路徑指向Django project 的根資料夾，執行 py manage.py runserver py manage.py runserver 預設發布路徑為 http://127.0.0.1:8000/ Python可透過Django套件，開發一個輕量級的web</description>
     </item>
     
     <item>

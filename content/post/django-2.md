@@ -2,7 +2,7 @@
 title:       "Django - 2 Run Server"
 subtitle:    ""
 description: ""
-date:        2018-11-30
+date:        2020-12-02
 author: Jasper
 published: true
 image: "/img/Tech/python-django/django-home.png"
