@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Django - 1 Environment Setup" />
+    <meta property="og:title" content="Django - 1 Environment Setup" />
+    <meta property="twitter:title" content="Django - 1 Environment Setup" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Jasper, Camping, TCM">
     <link rel="shortcut icon" href="/img/favicon_2.ico">
 
-    <title>Jasper blog</title>
+    <title>Django - 1 Environment Setup-Jasper blog</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/post/django-1/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -148,7 +148,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/home-sun-raise2.png')
+        background-image: url('/img/Tech/python-django/django-home.png')
     }
 </style>
 <header class="intro-header">
@@ -158,16 +158,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
+                        </a>
+                        
                     </div>
-                    <h1></h1>
+                    <h1>Django - 1 Environment Setup</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                Jasper Blog
+                            Jasper
                          
                         on 
-                        Monday, January 1, 0001
+                        Friday, November 30, 2018
                         
                         
                         
@@ -195,13 +203,70 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安裝python後再安裝django套件">安裝Python後，再安裝Django套件</a></li>
+        <li><a href="#環境變數設定">環境變數設定</a></li>
+        <li><a href="#django專案資料夾結構">Django專案資料夾結構</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
                 
-                
+                <h2 id="安裝python後再安裝django套件">安裝Python後，再安裝Django套件</h2>
+<ul>
+<li>
+<p>安裝django套件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pip install <span style="color:#8be9fd;font-style:italic">django</span><span style="color:#ff79c6">==</span>2.1.3
+</code></pre></div></li>
+</ul>
+<p>
+  <img src="/img/Tech/python-django/install_django.png" alt="">
+
+</p>
+<h2 id="環境變數設定">環境變數設定</h2>
+<ul>
+<li>
+<p>安裝完成後透過以下cmd確認功能是否正常</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">&gt;&gt;&gt; import django
+&gt;&gt;&gt; print<span style="color:#ff79c6">(</span>django.get_version<span style="color:#ff79c6">())</span>
+2.1
+</code></pre></div></li>
+<li>
+<p>使用Djano-admin創建web初始django專案資料夾</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">django-admin startproject mysite
+</code></pre></div></li>
+</ul>
+<p>
+  <img src="/img/Tech/python-django/creating-project.png" alt="">
+
+</p>
+<ul>
+<li>若無法正常執行，顯示“command not found: django-admin”，請先設定環境變數。</li>
+<li>使用Ananconda 安裝的話，加入路徑如下：C:\Program Files (x86)\Microsoft Visual Studio\Shared\Anaconda3_64\Scripts</li>
+</ul>
+<h2 id="django專案資料夾結構">Django專案資料夾結構</h2>
+<p>
+  <img src="/img/Tech/python-django/project-struct.png" alt="">
+
+</p>
+
 
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/post/django-2/" data-toggle="tooltip" data-placement="top" title="Django - 2 Run Server">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/camping01/" data-toggle="tooltip" data-placement="top" title="新竹五峰- 蘇山藏美 (#1)">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

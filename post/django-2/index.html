@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Django - 2 Run Server" />
+    <meta property="og:title" content="Django - 2 Run Server" />
+    <meta property="twitter:title" content="Django - 2 Run Server" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Jasper, Camping, TCM">
     <link rel="shortcut icon" href="/img/favicon_2.ico">
 
-    <title>Jasper blog</title>
+    <title>Django - 2 Run Server-Jasper blog</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/post/django-2/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -148,7 +148,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/home-sun-raise2.png')
+        background-image: url('/img/Tech/python-django/django-home.png')
     }
 </style>
 <header class="intro-header">
@@ -158,16 +158,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
+                        </a>
+                        
                     </div>
-                    <h1></h1>
+                    <h1>Django - 2 Run Server</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                Jasper Blog
+                            Jasper
                          
                         on 
-                        Monday, January 1, 0001
+                        Friday, November 30, 2018
                         
                         
                         
@@ -195,13 +203,68 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#發布網頁">發布網頁</a></li>
+        <li><a href="#發布為多人可共同執行的url">發布為多人可共同執行的URL</a></li>
+        <li><a href="#app-vs-project-應用程式和專案的差別">APP V.S. Project 應用程式和專案的差別</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
                 
-                
+                <h2 id="發布網頁">發布網頁</h2>
+<p>CMD將路徑指向Django project 的根資料夾，執行 py manage.py runserver</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">py manage.py runserver
+</code></pre></div><p>預設發布路徑為 http://127.0.0.1:8000/</p>
+<ul>
+<li>
+<p>Python可透過Django套件，開發一個輕量級的web frameworks，在開發模式不需考慮Server的設定，例如 IIS / Apache</p>
+</li>
+<li>
+<p>預設PORT是8000，可透過CMD 修改要開放的PORT為何</p>
+</li>
+</ul>
+<p>
+  <img src="/img/Tech/python-django/port-change.png" alt="">
+
+</p>
+<h2 id="發布為多人可共同執行的url">發布為多人可共同執行的URL</h2>
+<ul>
+<li>
+<p>通過指定一個ip位址，告訴server可以接受非本機電腦的訪問，對於有多人共同開發的需求來說特別有用。
+<code>0.0.0.0</code> 這個ip位址，告訴server去監聽任意的網路接口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python manage.py runserver 0.0.0.0:8000
+</code></pre></div></li>
+<li>
+<p>完成這個設定之後，區域網路中的其他電腦就可以透過本機的ip訪問了，例如：<code>http://192.168.1.103:8000</code></p>
+</li>
+</ul>
+<h2 id="app-vs-project-應用程式和專案的差別">APP V.S. Project 應用程式和專案的差別</h2>
+<ul>
+<li>app一個功能模組，projecct為一個具有多功能的整合系統。一個project可以有多個App，一個App可以被多個Project 使用
+
+  <img src="/img/Tech/python-django/app-vs-project.png" alt="">
+
+</li>
+</ul>
+
 
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/post/python-dash-2/" data-toggle="tooltip" data-placement="top" title="Python Web Dash (2)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/django-1/" data-toggle="tooltip" data-placement="top" title="Django - 1 Environment Setup">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

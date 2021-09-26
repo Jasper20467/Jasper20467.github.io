@@ -26,20 +26,29 @@
     </item>
     
     <item>
-      <title>Dash</title>
-      <link>/tags/dash/</link>
-      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      <title>Django</title>
+      <link>/tags/django/</link>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/dash/</guid>
+      <guid>/tags/django/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
       <link>/tags/python/</link>
-      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dash</title>
+      <link>/tags/dash/</link>
+      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dash/</guid>
       <description></description>
     </item>
     
