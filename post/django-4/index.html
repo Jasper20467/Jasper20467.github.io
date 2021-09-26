@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Django - 4 Introduce django urls" />
+    <meta property="og:title" content="Django - 4 Introduce django urls" />
+    <meta property="twitter:title" content="Django - 4 Introduce django urls" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Jasper, Camping, TCM">
     <link rel="shortcut icon" href="/img/favicon_2.ico">
 
-    <title>Jasper blog</title>
+    <title>Django - 4 Introduce django urls-Jasper blog</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/post/django-4/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -148,7 +148,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/home-sun-raise2.png')
+        background-image: url('/img/Tech/python-django/django-home.png')
     }
 </style>
 <header class="intro-header">
@@ -158,16 +158,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
+                        </a>
+                        
                     </div>
-                    <h1></h1>
+                    <h1>Django - 4 Introduce django urls</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                Jasper Blog
+                            Jasper
                          
                         on 
-                        Monday, January 1, 0001
+                        Friday, December 4, 2020
                         
                         
                         
@@ -195,13 +203,98 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#django-urls-說明">Django URLs 說明</a></li>
+        <li><a href="#app-內容">App 內容</a></li>
+        <li><a href="#helloworld網頁主體-內容">HelloWorld(網頁主體) 內容</a></li>
+        <li><a href="#djangourls----path-方法">Django.urls  -&gt; Path 方法</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
                 
-                
+                <h2 id="django-urls-說明">Django URLs 說明</h2>
+<ul>
+<li>
+<p>App在建立完成後，需要建立一個urls.py</p>
+</li>
+<li>
+<p>並將使urls.py 引入到Web的專案中。</p>
+</li>
+</ul>
+<p>
+  <img src="/img/Tech/python-django/app-struct.png" alt="">
+
+</p>
+<ul>
+<li>
+<p>在此專案範例中，HelloWorld為網頁設定主體，polls為App</p>
+</li>
+<li>
+<p>將app中的view.py作為一個頁面來使用，必須將urls的路徑map到網頁主體中。</p>
+</li>
+</ul>
+<h2 id="app-內容">App 內容</h2>
+<ul>
+<li>建立 <code>urls.py</code></li>
+<li>Import view，並且指定一個function，命名為name</li>
+</ul>
+<p>
+  <img src="/img/Tech/python-django/urls-files.png" alt="">
+
+</p>
+<ul>
+<li>
+<p>建立 <code>view.py</code></p>
+</li>
+<li>
+<p>建立一個視圖，並新建一個function，叫做index()，當對這個函數發出request的時候，response一組string</p>
+</li>
+</ul>
+<p>
+  <img src="/img/Tech/python-django/view-files.png" alt="">
+
+</p>
+<h2 id="helloworld網頁主體-內容">HelloWorld(網頁主體) 內容</h2>
+<ul>
+<li>修改 <code>urls.py</code>
+<ul>
+<li>當Django server 建立起來時，需要指定對應的urls</li>
+<li>此步驟是在紅框處，將polls類別中的urls.py引入，並且在urls路徑上加上polls: <code>http://127.0.0.1:8000/polls/</code></li>
+<li>如此即可以執行對應的App request，並傳回response
+
+  <img src="/img/Tech/python-django/add-polls-on-urlfile.png" alt="">
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="djangourls----path-方法">Django.urls  -&gt; Path 方法</h2>
+<p>
+  <img src="/img/Tech/python-django/path-method.png" alt="">
+
+</p>
+<blockquote>
+<p><a href="https://docs.djangoproject.com/en/2.1/intro/tutorial01/">https://docs.djangoproject.com/en/2.1/intro/tutorial01/</a></p>
+</blockquote>
+
 
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/post/django-3/" data-toggle="tooltip" data-placement="top" title="Django - 3 Create initial project">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/django-5/" data-toggle="tooltip" data-placement="top" title="Django - 5 Migrations">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

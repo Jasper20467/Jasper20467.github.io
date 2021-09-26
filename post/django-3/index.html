@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Django - 3 Create initial project" />
+    <meta property="og:title" content="Django - 3 Create initial project" />
+    <meta property="twitter:title" content="Django - 3 Create initial project" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Jasper, Camping, TCM">
     <link rel="shortcut icon" href="/img/favicon_2.ico">
 
-    <title>Jasper blog</title>
+    <title>Django - 3 Create initial project-Jasper blog</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/post/django-3/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -148,7 +148,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/home-sun-raise2.png')
+        background-image: url('/img/Tech/python-django/django-home.png')
     }
 </style>
 <header class="intro-header">
@@ -158,16 +158,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
+                        </a>
+                        
                     </div>
-                    <h1></h1>
+                    <h1>Django - 3 Create initial project</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                Jasper Blog
+                            Jasper
                          
                         on 
-                        Monday, January 1, 0001
+                        Thursday, December 3, 2020
                         
                         
                         
@@ -195,13 +203,90 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#初始專案建立">初始專案建立</a></li>
+        <li><a href="#建立-app">建立 app</a></li>
+        <li><a href="#建立-view">建立 view</a></li>
+        <li><a href="#編輯-router">編輯 router</a></li>
+        <li><a href="#建立網頁">建立網頁</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
                 
-                
+                <h2 id="初始專案建立">初始專案建立</h2>
+<ul>
+<li>透過Django -1 設定 建立一個Django專案資料夾</li>
+</ul>
+<h2 id="建立-app">建立 app</h2>
+<ul>
+<li>
+<p>在manage.py 同資料夾層別下執行<code>py manage.py startapp polls</code> ，此條指令可建立一個APP，作為一個模組程式，可以重複使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">py manage.py startapp polls
+</code></pre></div></li>
+<li>
+<p>
+  <img src="/img/Tech/python-django/create-app.png" alt="">
+
+</p>
+</li>
+</ul>
+<h2 id="建立-view">建立 view</h2>
+<ul>
+<li>
+<p>編輯polls/views.py ，建立一個基本的視圖(顯示網頁的內容)</p>
+</li>
+<li>
+<p>
+  <img src="/img/Tech/python-django/create-view.png" alt="">
+
+</p>
+</li>
+</ul>
+<h2 id="編輯-router">編輯 router</h2>
+<ul>
+<li>
+<p>編輯urls路徑，並將其引用到網頁Config的引用參考</p>
+</li>
+<li>
+<p>
+  <img src="/img/Tech/python-django/modify-url-config.png" alt="">
+
+</p>
+</li>
+</ul>
+<blockquote>
+<p>除了admin.site.urls 其餘的urls都是加入上述的include中</p>
+</blockquote>
+<h2 id="建立網頁">建立網頁</h2>
+<ul>
+<li>執行<code>py manage.py runserver</code>可建立網頁</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">py manage.py runserver
+</code></pre></div><ul>
+<li>
+  <img src="/img/Tech/python-django/run-server.png" alt="">
+
+</li>
+</ul>
+
 
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/post/django-2/" data-toggle="tooltip" data-placement="top" title="Django - 2 Run Server">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/django-4/" data-toggle="tooltip" data-placement="top" title="Django - 4 Introduce django urls">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 

@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Django - 5 Migrations" />
+    <meta property="og:title" content="Django - 5 Migrations" />
+    <meta property="twitter:title" content="Django - 5 Migrations" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Jasper, Camping, TCM">
     <link rel="shortcut icon" href="/img/favicon_2.ico">
 
-    <title>Jasper blog</title>
+    <title>Django - 5 Migrations-Jasper blog</title>
 
-    <link rel="canonical" href="/search/placeholder/">
+    <link rel="canonical" href="/post/django-5/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -148,7 +148,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/home-sun-raise2.png')
+        background-image: url('/img/Tech/python-django/django-home.png')
     }
 </style>
 <header class="intro-header">
@@ -158,16 +158,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                        <a class="tag" href="/tags/django" title="Django">
+                            Django
+                        </a>
+                        
                     </div>
-                    <h1></h1>
+                    <h1>Django - 5 Migrations</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
                         
-                                Jasper Blog
+                            Jasper
                          
                         on 
-                        Monday, January 1, 0001
+                        Saturday, December 5, 2020
                         
                         
                         
@@ -195,13 +203,61 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#models-的概念">Models 的概念</a></li>
+        <li><a href="#在app中建立一個新的modle">在APP中建立一個新的Modle</a></li>
+        <li><a href="#修改settingpy">修改setting.py</a></li>
+        <li><a href="#載入並複寫models的設定">載入並複寫models的設定</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
                 
-                
+                <h2 id="models-的概念">Models 的概念</h2>
+<ul>
+<li>建立一個可重複性使用，且明確的後端資料的存取/處理行為</li>
+<li>實現DRY(Don’t repeat yourself)</li>
+</ul>
+<h2 id="在app中建立一個新的modle">在APP中建立一個新的Modle</h2>
+<p>
+  <img src="/img/Tech/python-django/create-models.png" alt="">
+
+</p>
+<h2 id="修改settingpy">修改setting.py</h2>
+<ul>
+<li>在網頁設定的資料夾中，修改setting.py設定，加入app的相關模組，polls.apps.PollsConfig，使django知道要載入polls app的模組</li>
+</ul>
+<p>
+  <img src="/img/Tech/python-django/adj-app-files.png" alt="">
+
+</p>
+<p>
+  <img src="/img/Tech/python-django/setting-files-official.png" alt="">
+
+</p>
+<h2 id="載入並複寫models的設定">載入並複寫models的設定</h2>
+<p>
+  <img src="/img/Tech/python-django/migrations.png" alt="">
+
+</p>
+
 
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/post/django-4/" data-toggle="tooltip" data-placement="top" title="Django - 4 Introduce django urls">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/camping01/" data-toggle="tooltip" data-placement="top" title="新竹五峰- 蘇山藏美 (#1)">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
