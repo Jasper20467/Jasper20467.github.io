@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Jasper Blog</title>
-    <link>/tags/python/</link>
-    <description>Recent content in Python on Jasper Blog</description>
+    <title>Django on Jasper Blog</title>
+    <link>/tags/django/</link>
+    <description>Recent content in Django on Jasper Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="/tags/django/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Django - 1 Environment Setup</title>
       <link>/post/django-1/</link>
@@ -23,24 +23,6 @@
       
       <guid>/post/django-2/</guid>
       <description>發布網頁 CMD將路徑指向Django project 的根資料夾，執行 py manage.py runserver py manage.py runserver 預設發布路徑為 http://127.0.0.1:8000/ Python可透過Django套件，開發一個輕量級的web</description>
-    </item>
-    
-    <item>
-      <title>Python Web Dash (2)</title>
-      <link>/post/python-dash-2/</link>
-      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/python-dash-2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python Web Dash (1)</title>
-      <link>/post/python-dash-1/</link>
-      <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/python-dash-1/</guid>
-      <description></description>
     </item>
     
   </channel>
