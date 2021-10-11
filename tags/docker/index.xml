@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Jasper Blog</title>
+    <link>/tags/docker/</link>
+    <description>Recent content in Docker on Jasper Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dokcer Learning - 1</title>
+      <link>/post/docker-1/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-1/</guid>
+      <description>Docker Features Container 之間的獨立性 Docker Hub 使用來儲存images Images 是唯讀的映象檔，用於建造container Docker V.S. Virtual Machine Features Docker Virtual Machine OS 直接從docker hub 裡pull 作業</description>
+    </item>
+    
+    <item>
+      <title>Dokcer Learning - 2</title>
+      <link>/post/docker-2/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-2/</guid>
+      <description>Docker 命令介紹 docker -help Docker System Service 命令介紹</description>
+    </item>
+    
+  </channel>
+</rss>

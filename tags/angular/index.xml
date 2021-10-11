@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on Jasper Blog</title>
+    <link>/tags/angular/</link>
+    <description>Recent content in Angular on Jasper Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Angular Learning - 1</title>
+      <link>/post/angular-1-learning/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/angular-1-learning/</guid>
+      <description>Module Angular 中Module 為功能模組，用意為邏輯的處理 透過NgModule 實現模組化 通常根模組(Root Module) 會取名為 AppModule =&amp;gt; app.module.ts Module 檔案結構 模組檔案通常可分為</description>
+    </item>
+    
+    <item>
+      <title>Angular Learning - 2</title>
+      <link>/post/angular-2-learning/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/angular-2-learning/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
