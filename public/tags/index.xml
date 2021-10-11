@@ -26,6 +26,24 @@
     </item>
     
     <item>
+      <title>Docker</title>
+      <link>/tags/docker/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Angular</title>
+      <link>/tags/angular/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/angular/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Django</title>
       <link>/tags/django/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>

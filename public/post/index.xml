@@ -36,12 +36,48 @@ Hello Life! Share life and images.</description>
     </item>
     
     <item>
+      <title>Dokcer Learning - 1</title>
+      <link>/post/docker-1/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-1/</guid>
+      <description>Docker Features Container 之間的獨立性 Docker Hub 使用來儲存images Images 是唯讀的映象檔，用於建造container Docker V.S. Virtual Machine Features Docker Virtual Machine OS 直接從docker hub 裡pull 作業</description>
+    </item>
+    
+    <item>
+      <title>Dokcer Learning - 2</title>
+      <link>/post/docker-2/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/docker-2/</guid>
+      <description>Docker 命令介紹 docker -help Docker System Service 命令介紹</description>
+    </item>
+    
+    <item>
       <title>新竹五峰- 蘇山藏美 (#1)</title>
       <link>/post/camping01/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>/post/camping01/</guid>
       <description>初見蘇珊 2021春節連假是今年的第一露，與姊姊/姊夫/丞瑋（女友）/雋傑（女友）一起出發了！ 雖然是好久不見的老熟人了，但在國中時都是一起露營</description>
+    </item>
+    
+    <item>
+      <title>Angular Learning - 1</title>
+      <link>/post/angular-1-learning/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/angular-1-learning/</guid>
+      <description>Module Angular 中Module 為功能模組，用意為邏輯的處理 透過NgModule 實現模組化 通常根模組(Root Module) 會取名為 AppModule =&amp;gt; app.module.ts Module 檔案結構 模組檔案通常可分為</description>
+    </item>
+    
+    <item>
+      <title>Angular Learning - 2</title>
+      <link>/post/angular-2-learning/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/angular-2-learning/</guid>
+      <description></description>
     </item>
     
     <item>

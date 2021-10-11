@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Dokcer Learning - 1" />
+    <meta property="og:title" content="Dokcer Learning - 1" />
+    <meta property="twitter:title" content="Dokcer Learning - 1" />
+    
+
+    
+    <meta name="description" content="Docker V.S. Virtual Machine">
+    <meta property="og:description" content="Docker V.S. Virtual Machine" />
+    <meta property="twitter:description" content="Docker V.S. Virtual Machine" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Dokcer Learning - 1-Jasper blog</title>
+
+    <link rel="canonical" href="/post/docker-1/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/docker/docker-home.jpeg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/docker" title="Docker">
+                            Docker
+                        </a>
+                        
+                    </div>
+                    <h1>Dokcer Learning - 1</h1>
+                    <h2 class="subheading">Introduce Docker </h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper
+                         
+                        on 
+                        Thursday, February 25, 2021
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#docker-features">Docker Features</a></li>
+        <li><a href="#docker-vs-virtual-machine">Docker V.S. Virtual Machine</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h2 id="docker-features">Docker Features</h2>
+<ol>
+<li>
+<p>Container 之間的獨立性</p>
+</li>
+<li>
+<p>Docker Hub 使用來儲存images</p>
+</li>
+<li>
+<p>Images 是唯讀的映象檔，用於建造container</p>
+</li>
+</ol>
+<h2 id="docker-vs-virtual-machine">Docker V.S. Virtual Machine</h2>
+<table>
+<thead>
+<tr>
+<th>Features</th>
+<th style="text-align:center">Docker</th>
+<th style="text-align:right">Virtual Machine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td style="text-align:center">直接從docker hub 裡pull 作業系統的image</td>
+<td style="text-align:right">需要安裝作業系統</td>
+</tr>
+<tr>
+<td>BOOT</td>
+<td style="text-align:center">不用開機，啟動速度比VM快</td>
+<td style="text-align:right">VM裡面的OS 開機要花一些時間</td>
+</tr>
+<tr>
+<td>RESOURCE</td>
+<td style="text-align:center">底層還是使用OS的Kernal</td>
+<td style="text-align:right">完全隔離系統的硬體資源</td>
+</tr>
+<tr>
+<td>CAPACITY</td>
+<td style="text-align:center">佔用硬碟的容量較小</td>
+<td style="text-align:right">佔用硬碟的容量較大</td>
+</tr>
+</tbody>
+</table>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/docker-2/" data-toggle="tooltip" data-placement="top" title="Dokcer Learning - 2">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/hello-world/" data-toggle="tooltip" data-placement="top" title="Welcome to Jasper`s Blog">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/angular" title="angular">
+                            angular
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dash" title="dash">
+                            dash
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2021
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
