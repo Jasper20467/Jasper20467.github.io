@@ -33,7 +33,7 @@
 
 #### 專案:
 
-{{< imgloop "/img/Jasper/1.PNG,/img/Jasper/2.PNG,/img/Jasper/3.PNG,/img/Jasper/4.PNG,/img/Jasper/5.PNG,/img/Jasper/6.PNG,/img/Jasper/Achievements/7.PNG,/img/Jasper/8.PNG,/img/Jasper/9.PNG,/img/Jasper/10.PNG,/img/Jasper/11.PNG" >}}
+{{< imgloop "/img/Jasper/1.PNG,/img/Jasper/2.PNG,/img/Jasper/3.PNG,/img/Jasper/4.PNG,/img/Jasper/5.PNG,/img/Jasper/6.PNG,/img/Jasper/7.PNG,/img/Jasper/8.PNG,/img/Jasper/9.PNG,/img/Jasper/10.PNG,/img/Jasper/11.PNG" >}}
 
 * 自動化測試程式 (2021.04 - )
     - WPF 視窗程式開發
