@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (5)"
 subtitle:    "重構 Refactoring"
 description: ""
-date:        2022-12-17
+date:        2022-12-05
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"

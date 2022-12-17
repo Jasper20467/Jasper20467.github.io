@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (8)"
 subtitle:    "SOLID - 單一職責原則"
 description: ""
-date:        2022-12-17
+date:        2022-12-08
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"

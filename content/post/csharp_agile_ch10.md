@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (10)"
 subtitle:    "SOLID -  里氏替換原則"
 description: ""
-date:        2022-12-17
+date:        2022-12-10
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"

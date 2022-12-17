@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (1)"
 subtitle:    "敏捷軟體開發宣言"
 description: ""
-date:        2022-12-17
+date:        2022-12-01
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"

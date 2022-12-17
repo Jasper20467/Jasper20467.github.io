@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (2)"
 subtitle:    "XP極限程式設計實踐"
 description: ""
-date:        2022-12-17
+date:        2022-12-02
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"

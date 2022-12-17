@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (11)"
 subtitle:    "SOLID -  依賴反轉原則"
 description: ""
-date:        2022-12-17
+date:        2022-12-11
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"
