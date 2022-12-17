@@ -6,113 +6,113 @@
     <description>Recent content in CSharp on Jasper Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Agile Principles Patterns Practices in C# (1)</title>
-      <link>/post/csharp_agile_ch1/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch1/</guid>
-      <description>1. 個人與互動 重於 程序與工具 人是獲得成功最關鍵的因素 正確的工具 =&amp;gt; 先用小工具開始，直到他無法適用。不要認為更大的工具會自動幫你把工作得更好，通常</description>
-    </item>
-    
-    <item>
-      <title>Agile Principles Patterns Practices in C# (10)</title>
-      <link>/post/csharp_agile_ch10/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch10/</guid>
-      <description>LiSkov Principle 子型態(Subtype)必須能夠替換掉它們的基底型態(base type) 當一個函式f()，他的參數為指向某個基底類別為B的參考，而假設B有衍生類</description>
-    </item>
-    
-    <item>
-      <title>Agile Principles Patterns Practices in C# (11)</title>
-      <link>/post/csharp_agile_ch11/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch11/</guid>
-      <description>Dependency Inversion Principle 高層模組不應該依賴於(相依於)低層模組。二者都應該依賴於抽象 抽象不應該依賴於細節，細節應該依賴於抽象。 一個設計良好的物件導向程式，相對</description>
-    </item>
-    
+    <lastBuildDate>Mon, 12 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Agile Principles Patterns Practices in C# (12)</title>
       <link>/post/csharp_agile_ch12/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>/post/csharp_agile_ch12/</guid>
       <description>Interface Segregation Principle 介面隔離原則 這個原則是用來處理&amp;quot;胖&amp;quot;介面存在的缺點。如果類別的介面不是內聚的，就代表該類別具有&amp;quot;胖&amp;qu</description>
     </item>
     
     <item>
-      <title>Agile Principles Patterns Practices in C# (2)</title>
-      <link>/post/csharp_agile_ch2/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Agile Principles Patterns Practices in C# (11)</title>
+      <link>/post/csharp_agile_ch11/</link>
+      <pubDate>Sun, 11 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/post/csharp_agile_ch2/</guid>
-      <description>1. 完整團隊 我們希望客戶、管理者和開發人員緊密工作在一起，以了解彼此面臨的問題，並共同解決這些問題。 誰是客戶? XP團隊中的客戶是指 &amp;ldquo</description>
+      <guid>/post/csharp_agile_ch11/</guid>
+      <description>Dependency Inversion Principle 高層模組不應該依賴於(相依於)低層模組。二者都應該依賴於抽象 抽象不應該依賴於細節，細節應該依賴於抽象。 一個設計良好的物件導向程式，相對</description>
     </item>
     
     <item>
-      <title>Agile Principles Patterns Practices in C# (3)</title>
-      <link>/post/csharp_agile_ch3/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Agile Principles Patterns Practices in C# (10)</title>
+      <link>/post/csharp_agile_ch10/</link>
+      <pubDate>Sat, 10 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/post/csharp_agile_ch3/</guid>
-      <description>1. 初始探索 專案開始時，開發人員和客戶只會商討系統的重要的特性，隨專案的進展，客戶會不斷地發現新的特性。當識別出一個特性時，會把它分解成一個或</description>
+      <guid>/post/csharp_agile_ch10/</guid>
+      <description>LiSkov Principle 子型態(Subtype)必須能夠替換掉它們的基底型態(base type) 當一個函式f()，他的參數為指向某個基底類別為B的參考，而假設B有衍生類</description>
     </item>
     
     <item>
-      <title>Agile Principles Patterns Practices in C# (4)</title>
-      <link>/post/csharp_agile_ch4/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Agile Principles Patterns Practices in C# (9)</title>
+      <link>/post/csharp_agile_ch9/</link>
+      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/post/csharp_agile_ch4/</guid>
-      <description>1. 測試驅動開發 開發原則 在撰寫一個單元測試前，不撰寫任何的程式碼 只撰寫剛好無法通過的單元測試，不能編譯也算無法通過 只撰寫剛好能通過測試失敗的產</description>
-    </item>
-    
-    <item>
-      <title>Agile Principles Patterns Practices in C# (5)</title>
-      <link>/post/csharp_agile_ch5/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch5/</guid>
-      <description>1. 重構定義 在不改變程式碼外在行為的前提下，對程式碼做出修改，以改進程式碼內部結構的過程。 每一個軟體模組都有三個職責 它運行時所達成的功能，也是</description>
-    </item>
-    
-    <item>
-      <title>Agile Principles Patterns Practices in C# (6)</title>
-      <link>/post/csharp_agile_ch6/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch6/</guid>
-      <description>設計和程式設計都是人的活動，忘記了這一點，就會失去一切。 對於設計初期UML圖的看法：「在準備戰役時，我發現計劃本身總是無用的，但是做計劃卻是</description>
-    </item>
-    
-    <item>
-      <title>Agile Principles Patterns Practices in C# (7)</title>
-      <link>/post/csharp_agile_ch7/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch7/</guid>
-      <description>Agile Design 什麼是敏捷設計 實際能滿足工程設標準的軟體說明文件，就只有原始程式碼清單 1. 設計臭味 Code Smell 設計臭味 僵化性 (Rigidity) 脆弱性 (Fragility) 頑固性 (Immobility) 黏滯性 (Viscosity) 不必要的複雜</description>
+      <guid>/post/csharp_agile_ch9/</guid>
+      <description>Open Closed Principle 軟體實體(類別、模組、函式等等)應該是可擴展的，但不可修改。 1. OCP概述 對於擴展式開放的(open for extension)。 這意味著模組</description>
     </item>
     
     <item>
       <title>Agile Principles Patterns Practices in C# (8)</title>
       <link>/post/csharp_agile_ch8/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>/post/csharp_agile_ch8/</guid>
       <description>Singel Responsibility Principle 單一職責原則 一個類別應該只有一個發生變化的原因 1. 範例說明 Rectangle 具有兩個方法，分別負擔以下兩個工作 draw(): 把舉行繪製在螢幕上 area(): 計算矩形的面積 有兩個</description>
     </item>
     
     <item>
-      <title>Agile Principles Patterns Practices in C# (9)</title>
-      <link>/post/csharp_agile_ch9/</link>
-      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Agile Principles Patterns Practices in C# (7)</title>
+      <link>/post/csharp_agile_ch7/</link>
+      <pubDate>Wed, 07 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/post/csharp_agile_ch9/</guid>
-      <description>Open Closed Principle 軟體實體(類別、模組、函式等等)應該是可擴展的，但不可修改。 1. OCP概述 對於擴展式開放的(open for extension)。 這意味著模組</description>
+      <guid>/post/csharp_agile_ch7/</guid>
+      <description>Agile Design 什麼是敏捷設計 實際能滿足工程設標準的軟體說明文件，就只有原始程式碼清單 1. 設計臭味 Code Smell 設計臭味 僵化性 (Rigidity) 脆弱性 (Fragility) 頑固性 (Immobility) 黏滯性 (Viscosity) 不必要的複雜</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (6)</title>
+      <link>/post/csharp_agile_ch6/</link>
+      <pubDate>Tue, 06 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch6/</guid>
+      <description>設計和程式設計都是人的活動，忘記了這一點，就會失去一切。 對於設計初期UML圖的看法：「在準備戰役時，我發現計劃本身總是無用的，但是做計劃卻是</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (5)</title>
+      <link>/post/csharp_agile_ch5/</link>
+      <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch5/</guid>
+      <description>1. 重構定義 在不改變程式碼外在行為的前提下，對程式碼做出修改，以改進程式碼內部結構的過程。 每一個軟體模組都有三個職責 它運行時所達成的功能，也是</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (4)</title>
+      <link>/post/csharp_agile_ch4/</link>
+      <pubDate>Sun, 04 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch4/</guid>
+      <description>1. 測試驅動開發 開發原則 在撰寫一個單元測試前，不撰寫任何的程式碼 只撰寫剛好無法通過的單元測試，不能編譯也算無法通過 只撰寫剛好能通過測試失敗的產</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (3)</title>
+      <link>/post/csharp_agile_ch3/</link>
+      <pubDate>Sat, 03 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch3/</guid>
+      <description>1. 初始探索 專案開始時，開發人員和客戶只會商討系統的重要的特性，隨專案的進展，客戶會不斷地發現新的特性。當識別出一個特性時，會把它分解成一個或</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (2)</title>
+      <link>/post/csharp_agile_ch2/</link>
+      <pubDate>Fri, 02 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch2/</guid>
+      <description>1. 完整團隊 我們希望客戶、管理者和開發人員緊密工作在一起，以了解彼此面臨的問題，並共同解決這些問題。 誰是客戶? XP團隊中的客戶是指 &amp;ldquo</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (1)</title>
+      <link>/post/csharp_agile_ch1/</link>
+      <pubDate>Thu, 01 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch1/</guid>
+      <description>1. 個人與互動 重於 程序與工具 人是獲得成功最關鍵的因素 正確的工具 =&amp;gt; 先用小工具開始，直到他無法適用。不要認為更大的工具會自動幫你把工作得更好，通常</description>
     </item>
     
   </channel>
