@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (9)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (9)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (9)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (9)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch9/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (9)</h1>
+                    <h2 class="subheading">SOLID -  開放封閉原則</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Saturday, December 17, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#open-closed-principle"><strong>O</strong>pen <strong>C</strong>losed <strong>P</strong>rinciple</a>
+      <ul>
+        <li><a href="#1-ocp概述">1. OCP概述</a></li>
+        <li><a href="#2-shape應用程式">2. Shape應用程式</a></li>
+        <li><a href="#3-總結">3. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h1 id="open-closed-principle"><strong>O</strong>pen <strong>C</strong>losed <strong>P</strong>rinciple</h1>
+<blockquote>
+<p>軟體實體(類別、模組、函式等等)應該是可擴展的，但不可修改。</p>
+</blockquote>
+<h2 id="1-ocp概述">1. OCP概述</h2>
+<ol>
+<li>對於擴展式開放的(open for extension)。
+這意味著模組的行為式可擴展的。當應用的需求改變時，我們可以對模組進行擴展，使其具有那些滿足改變的新行為。換句話說，我們可以改變模組的功能。</li>
+<li>對於修改式封閉的(closed for modification)
+對模組行為進行擴展時，不必要動模組的原始程式碼或二進位碼。模組的二進位可執行版本，無論是可連結的程式庫、DLL或.EXE檔，都無須更動。</li>
+</ol>
+<ul>
+<li>如何才能使【不變更動模組原始程式碼但改變它的行為】成為可能?
+答案就是抽象 (abstruction)</li>
+</ul>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter9_OCP/9_1.png" alt="">
+
+
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter9_OCP/9_2.png" alt="">
+
+
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter9_OCP/9_3.png" alt="">
+
+</p>
+<h2 id="2-shape應用程式">2. Shape應用程式</h2>
+<p>Listing 9-1 Square/Circle問題的程式化解決方案
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter9_OCP/Listing9-1.png" alt="">
+
+</p>
+<ul>
+<li>違反OCP
+DrawAllShapes函式不符合OCP，因為他對於加入新的形狀型態並非封閉的。每增加一種新的形狀型態，都必須更改這個函式。</li>
+</ul>
+<p>Listing 9-2 Square/Circle問題的物件導向設計(OOD)解決方案</p>
+<ul>
+<li>遵循OCP
+展示一個符合OCP的解決方案。在這個方案中，我們撰寫了一個名為Shape的抽象類別。這個抽象類別僅有一個名為Draw的抽象方法。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">interface</span> Shape
+{
+    <span style="color:#ff79c6">void</span> Draw();
+}
+
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Square</span> : Shape
+{
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Draw()
+    {
+        <span style="color:#6272a4">//繪製正方形
+</span><span style="color:#6272a4"></span>    }
+}
+
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Circle</span> : Shape
+{
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Draw()
+    {
+        <span style="color:#6272a4">//繪製圓形
+</span><span style="color:#6272a4"></span>    }
+}
+
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> DrawAllShapes(IList shapes)
+{
+    <span style="color:#ff79c6">foreach</span> (Shape shape <span style="color:#ff79c6">in</span> shapes)
+        shap.Draw();
+}
+</code></pre></div><p>Q: 如果我們要求所有的Circle必須在Square之前繪製?
+那麼Listing 9-2當中的DarwAllShapes函式無法對這種變化達到封閉效果。我們必須修改DarwAllShapes的實作，使他先掃描串列中所有的Circle，然後再掃描所有的Square。</p>
+<ul>
+<li>使用抽象獲得顯式封閉
+IComparable介面只有一個方法:CompareTo</li>
+</ul>
+<p>Listing 9-3 繼承了IComparable介面的Shape</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">interface</span> Shape : IComparable
+{
+    <span style="color:#ff79c6">void</span> Draw();
+}
+</code></pre></div><p>Listing 9-4 依序繪製的DrawAllShapes函式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> DrawAllShapes(ArralList shapes)
+{
+    shapes.Sort();
+    <span style="color:#ff79c6">foreach</span> (Shape shape <span style="color:#ff79c6">in</span> shapes)
+        shap.Draw();
+}
+</code></pre></div><p>Listing 9-5 對Circle排序</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Circle</span> : Shape
+{
+    <span style="color:#ff79c6">public</span> <span style="color:#8be9fd">int</span> CompareTo(<span style="color:#8be9fd">object</span> o)
+    {
+        <span style="color:#ff79c6">if</span> (o <span style="color:#ff79c6">is</span> Square)
+            <span style="color:#ff79c6">return</span> -<span style="color:#bd93f9">1</span>;
+        <span style="color:#ff79c6">else</span>
+            <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+    }
+}
+</code></pre></div><p>顯然這函式以及所有Shape的衍生類別中的CompareTo函式都不符合OCP。每次建立一個新的Shape的衍生類別時，所有的CompareTo()函式都需要修改。</p>
+<ul>
+<li>使用【資料驅動】的方式獲取封閉性
+如果我們要使Shape的各個衍生類別間互不知曉，可以採用表格驅動的解決方案。</li>
+</ul>
+<p>Listing 9-6 表格驅動的形狀類別排序機制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#6272a4">///&lt;sumaary&gt;
+</span><span style="color:#6272a4">/// 這個比較程式用於從priorities hastable中，搜尋某種形狀
+</span><span style="color:#6272a4">/// priorities table定義了形狀的先後次序。位找到的形狀優先於找得到的形狀。
+</span><span style="color:#6272a4">///&lt;summary&gt;
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">ShapeComparer</span> : IComparer
+{
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> Hashtable priorities = <span style="color:#ff79c6">new</span> Hashtable();
+
+    <span style="color:#ff79c6">static</span> ShapeComparer()
+    {
+        priorities.Add(<span style="color:#ff79c6">typeof</span>(Circle), <span style="color:#bd93f9">1</span>);
+        priorities.Add(<span style="color:#ff79c6">typeof</span>(Square), <span style="color:#bd93f9">2</span>);
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#8be9fd">int</span> PriorityFor(Type type)
+    {
+        <span style="color:#ff79c6">if</span>(priorities.Contains(type))
+            <span style="color:#ff79c6">return</span> (<span style="color:#8be9fd">int</span>)priorities[type];
+        <span style="color:#ff79c6">else</span>
+            <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+    }
+
+    <span style="color:#ff79c6">public</span> <span style="color:#8be9fd">int</span> Compare(<span style="color:#8be9fd">object</span> o1, <span style="color:#8be9fd">object</span> o2)
+    {
+        <span style="color:#8be9fd">int</span> priority1 = PriorityFor(o1.GetType());
+        <span style="color:#8be9fd">int</span> priority2 = PriorityFor(o2.GetType());
+        <span style="color:#ff79c6">return</span> priority1.CompareTo(priority2);
+    }
+}
+
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> DrawAllShapes(IList shapes)
+{
+    shapes.Sort(<span style="color:#ff79c6">new</span> ShapeComparer());
+    <span style="color:#ff79c6">foreach</span> (Shape shape <span style="color:#ff79c6">in</span> shapes)
+        shap.Draw();
+}
+</code></pre></div><h2 id="3-總結">3. 總結</h2>
+<ul>
+<li>就許多方便來說，物件導向設計的核心之一就是OCP</li>
+<li>遵循這個原則可以帶來好處:也就是靈活性、再使用性及維護性</li>
+<li>【拒絕不成熟的抽象】和抽象本身一樣重要</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/hugo-basic/" data-toggle="tooltip" data-placement="top" title="Hugo Basic">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch8/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (8)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/angular" title="angular">
+                            angular
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/dash" title="dash">
+                            dash
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2022
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

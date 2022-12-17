@@ -4,7 +4,7 @@ subtitle:    "SOLID -  里氏替換原則"
 description: ""
 date:        2022-12-17
 author: Jasper & Ken
-published: false
+published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"
 tags:  ["CSharp", "Book"]
 categories:  [Tech]
