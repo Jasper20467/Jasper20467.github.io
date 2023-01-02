@@ -1,6 +1,6 @@
 ---
 title:       "Agile Principles Patterns Practices in C# (15)"
-subtitle:    "UML - 概述"
+subtitle:    "狀態圖 (State Diagram)"
 description: ""
 date:        2022-12-28
 author: Jasper & Ken

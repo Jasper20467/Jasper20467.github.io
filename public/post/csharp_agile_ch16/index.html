@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Agile Principles Patterns Practices in C# (15)" />
-    <meta property="og:title" content="Agile Principles Patterns Practices in C# (15)" />
-    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (15)" />
+    <meta name="title" content="Agile Principles Patterns Practices in C# (16)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (16)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (16)" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Jasper, Camping, TCM">
     <link rel="shortcut icon" href="/img/favicon_2.ico">
 
-    <title>Agile Principles Patterns Practices in C# (15)-Jasper blog</title>
+    <title>Agile Principles Patterns Practices in C# (16)-Jasper blog</title>
 
-    <link rel="canonical" href="/post/csharp_agile_ch15/">
+    <link rel="canonical" href="/post/csharp_agile_ch16/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -167,8 +167,8 @@
                         </a>
                         
                     </div>
-                    <h1>Agile Principles Patterns Practices in C# (15)</h1>
-                    <h2 class="subheading">狀態圖 (State Diagram)</h2>
+                    <h1>Agile Principles Patterns Practices in C# (16)</h1>
+                    <h2 class="subheading">物件圖 (UML - Object Diagram)</h2>
                     <span class="meta">
                         Posted by 
                         
@@ -205,92 +205,171 @@
                 </header>
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#狀態圖-state-diagram">狀態圖 (State Diagram)</a>
+    <li>
       <ul>
-        <li><a href="#1-基礎知識">1. 基礎知識</a></li>
-        <li><a href="#2-使用fsm圖示-finite-state-machine">2. 使用FSM圖示 (finite state machine)</a></li>
-        <li><a href="#3-總結">3. 總結</a></li>
+        <li><a href="#1-即時快照">1. 即時快照</a></li>
+        <li><a href="#2-主動物件">2. 主動物件</a></li>
+        <li><a href="#2-總結">2. 總結</a></li>
       </ul>
     </li>
   </ul>
 </nav>
                 
-                <h1 id="狀態圖-state-diagram">狀態圖 (State Diagram)</h1>
-<h2 id="1-基礎知識">1. 基礎知識</h2>
+                <p>物件圖 (UML - Object Diagram)</p>
+<p>======</p>
+<blockquote>
+<p>UML物件圖展示了在一個特定時刻取得的物件、關係和屬性值</p>
+</blockquote>
+<h2 id="1-即時快照">1. 即時快照</h2>
+<ul>
+<li>當你需要展示系統在某個特定時刻或某個特定狀態下的內部結構時，像這樣的物件圖是很有用的</li>
+<li>在大多數情況下是不需要他們的，而當需要他們使他們又是不可或缺的</li>
+<li>你將會很少需要他們，絕不要假設對於系統中的每個場景，甚至對於每個系統你都需要繪製他們
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_1.png" alt="">
+
+</li>
+<li>這幅圖顯示出有哪些可用的資料結構，但卻沒有準確地告訴你在任一給定時刻所建立起來的物件和關係。</li>
+<li>例如當需要表示一個廚房和一個餐廳，他們可以透過一個牆洞將之連接起來，由此幅圖就沒辦法明確的顯示此意圖</li>
+</ul>
 <p>
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_1.png" alt="">
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_2.png" alt="">
 
 </p>
 <ul>
-<li>展示一個簡單的狀態遷移圖(STD, state transition diagram)，該圖描繪了控制使用者登入到系統的FSM。</li>
-<li>圓角矩形代表狀態，上層為狀態名稱，下層為特定動作</li>
-<li>狀態之間包含箭頭的現稱為遷移(transition)，每個遷移都標記觸發該遷移的事件名稱</li>
-<li>實心圓為初始偽狀態(initial pseudostate)</li>
-<li>在Sending Password Failed狀態外圍畫一個稱為超狀態(superstate)</li>
+<li>這幅圖中展示的系統中的物件以及這些物件連結的其他物件</li>
+<li>圖中把Kitchen和LunchRoom顯示為Space的不同實例，並展示了這兩個房間是如何透過一個牆洞連接起來的</li>
+<li>同時圖中也展示了所有其他必須存在的物件和關係</li>
 </ul>
-<h3 id="特定事件">特定事件</h3>
-<p>
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_2.png" alt="">
+<h2 id="2-主動物件">2. 主動物件</h2>
+<ul>
+<li>再多執行緒的系統中，物件圖也非常有用</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">using</span> System.Collections;
+<span style="color:#ff79c6">using</span> System.Net;
+<span style="color:#ff79c6">using</span> System.Net.Sockets;
+<span style="color:#ff79c6">using</span> System.Threading;
+<span style="color:#ff79c6">namespace</span> SocketServer
+{
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">interface</span> SocketService
+    {
+        <span style="color:#ff79c6">void</span> Serve(Socket s);
+    }
 
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">SocketServer</span>
+    {    
+        <span style="color:#ff79c6">private</span> TcpListener serverSocket = <span style="color:#ff79c6">null</span>;
+        <span style="color:#ff79c6">private</span> Thread serverThread = <span style="color:#ff79c6">null</span>;
+        <span style="color:#ff79c6">private</span> <span style="color:#8be9fd">bool</span> running = <span style="color:#ff79c6">false</span>;
+        <span style="color:#ff79c6">private</span> SocketService itsService = <span style="color:#ff79c6">null</span>;
+        <span style="color:#ff79c6">private</span> ArrayList threads = <span style="color:#ff79c6">new</span> ArrayList();
+        
+        <span style="color:#ff79c6">public</span> SocketServer(<span style="color:#8be9fd">int</span> port, SocketService service)
+        {
+            itsService = service;
+            IPAddress addr = IPAddress.Parse(<span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>) ;
+            serverSocket .Start ();
+            serverSocket = <span style="color:#ff79c6">new</span> TepListener(addr, port);
+            serverThread = <span style="color:#ff79c6">new</span> Thread(<span style="color:#ff79c6">new</span> Threadstart (Server));
+            serverThread.Start () ;
+        }       
+        
+        <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Close()
+        {
+            running = <span style="color:#ff79c6">false</span>;
+            serverThread.Interrupt();
+            serverSocket.Stop();
+            serverThread.Join();
+            WaitforServiceThreads();
+        }
 
+        <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> Server()
+        {
+            running = <span style="color:#ff79c6">true</span>;
+            <span style="color:#ff79c6">while</span>(running)
+            {
+                Socket s = serverSocket.AcceptSocket();
+                StartServiceThread(s);
+            }            
+        }
 
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_3.png" alt="">
+        <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> StartServiceThread(Socket s)
+        {
+            Thread serviceThread = <span style="color:#ff79c6">new</span> Thread(<span style="color:#ff79c6">new</span> ServiceRunner(s, <span style="color:#ff79c6">this</span>).ThreadStart());
+            <span style="color:#ff79c6">lock</span>(threads)
+            {
+                threads.Add(serviceThread);
+            }
+            serviceThread.Start();
+        }
+
+        <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> WaitForServiceThreads ()
+        {
+            <span style="color:#ff79c6">while</span> (threads.Count &gt; <span style="color:#bd93f9">0</span>)
+            {
+                Thread t;
+                <span style="color:#ff79c6">lock</span> (threads)
+                {
+                    t = (Thread)threads[<span style="color:#bd93f9">0</span>];
+                }
+            }
+            t.Join();
+        }
+
+        <span style="color:#ff79c6">internal</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">ServiceRunner</span>
+        {
+            <span style="color:#ff79c6">private</span> Socket itsSocket;
+            <span style="color:#ff79c6">private</span> SocketServer itsServer;
+            
+            <span style="color:#ff79c6">public</span> ServiceRunner(Socket s,SocketServer server)
+            {
+                itsSocket = s;
+                itsServer = server;
+            }
+
+            <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Run()
+            {
+                tsServer.itsService.Serve(itsSocket);
+                <span style="color:#ff79c6">lock</span> (itsServer.threads)
+                {
+                    itsServer.threads.Remove(Thread.CurrentThread);
+
+                }
+                itsSocket.Close();
+            }
+
+            <span style="color:#ff79c6">public</span> ThreadStart ThreadStart()
+            {
+                <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> ThreadStart(Run);
+            }
+        }
+    }
+}
+</code></pre></div><p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_3.png" alt="">
 
 </p>
 <ul>
-<li>開始和結束都在相同狀態上的迴圈遷移箭頭</li>
-<li>自反遷移(reflexive transition)不僅會觸發myAction，還會觸發exit和entry動作</li>
+<li>由此類別圖中很難看出這段程式碼的意圖。</li>
+<li>圖中展示了所有的類別和他們之間的關係，但是卻沒有以某種方式傳達更關鍵的場景</li>
 </ul>
-<h3 id="超狀態">超狀態</h3>
-<ul>
-<li>當許多的狀態以相同的方式回應某些相同事件時，使用超狀態非常方便。
-
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_4.png" alt="">
-
-</li>
-<li>兩個圖示是等價的
-
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_5.png" alt="">
-
-</li>
-<li>S3的pause遷移改寫了Cancelable超狀態的預設pause遷移。</li>
-<li>超狀態更像是基底類別。子狀態能夠用和衍生類別改寫基底類別的方法相同的方式改寫其超狀態的遷移</li>
-<li>超狀態漢子狀態之間的關係，實際上和繼承關係是不等價的
-
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_6.png" alt="">
-
-</li>
-<li>超狀態可以具有和一般狀態相同的entry、exit及特定事件</li>
-<li>當Some state遷移到Sub狀態時，FSM首先觸發enterSuper，再來觸發enterSub</li>
-<li>當從Sub2狀態離開時，FSM首先觸發exitSub2，再來觸發exitSuper</li>
-<li>Sub到Sub2的e2遷移僅會觸發exitSub和enterSub2，其未離開超狀態</li>
-</ul>
-<h3 id="初始偽狀態和結束偽狀態">初始偽狀態和結束偽狀態</h3>
 <p>
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_7.png" alt="">
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_4.png" alt="">
 
 </p>
 <ul>
-<li>展示了兩個UML常用的偽狀態</li>
-<li>FSM是開始於初始偽狀態遷移出來的程序，從初始偽狀態出來的遷移不能帶有事件，因為這個事件就是狀態機的建立。不過這個遷移可以帶有動作，這個動作將作為FSM建立完成後觸發的第一個動作</li>
-<li>FSM前移到結束偽狀態(final pseudostate)而消亡，這狀態實際是永遠無法到達的。到結束偽狀態的遷移上頭所帶的任何動作都將成為該FSM觸發的最後動作。</li>
+<li>請注意圍繞在Thread實例的粗體邊框</li>
+<li>具有粗體邊框的物件代表主動物件，主動物件管理著一個控制執行緒</li>
+<li>他們具有用來控制執行緒的方法，例如：Start / Abort / Sleep &hellip; 等等</li>
+<li>在這幅圖中所有的主動物件都是Thread的實例</li>
+<li>物件圖的表達力比類別圖強一些，因為這個特定應用的結構是在運行時建構起來的</li>
+<li><strong>因此在這種情況下結構表達的大多是物件而不是類別</strong></li>
 </ul>
-<h2 id="2-使用fsm圖示-finite-state-machine">2. 使用FSM圖示 (finite state machine)</h2>
+<h2 id="2-總結">2. 總結</h2>
 <ul>
-<li>此圖是用在理解那些&quot;行為已知的子系統&quot;的狀態機非常有用</li>
-<li>不過大部分適合以FSM表達的系統，其行為是無法預知的。此圖是不適合用於那些頻繁變化的系統。
-
-  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_8.png" alt="">
-
-</li>
-<li>可以將STD表示成狀態遷移表(STT, state transition Table)表15-1，這表格很容易就能轉換成一個文字檔</li>
-<li>以這種方式建立和維護FSM比維護圖示容易許多</li>
-<li>SMC (state machine compiler)可讀進STT並產生出實作該邏輯的C++程式(參考www.objectmentor.com)</li>
-</ul>
-<h2 id="3-總結">3. 總結</h2>
-<ul>
-<li>FSM在組織軟體時是一種強而有力的學說，UML在FSM的視覺化提供豐富的符號。</li>
-<li>不過，在開發和維護FSM方面，採用文字語言要比圖形更容易一些。</li>
+<li>物件圖提供了系統在某個特定時刻的狀態快照</li>
+<li>當系統的結構是動態建構起來而不是尤其靜態的類別結構決定時，這是一種描述系統的有用方法</li>
+<li>在大多數情況下，他們都可以從相對應的類別途中直接推導出來，因此物件圖實際並沒有多大的作用</li>
 </ul>
 
 
@@ -298,13 +377,13 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/csharp_agile_ch16/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (16)">&larr;
+                        <a href="/post/csharp_agile_ch12/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (12)">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/post/csharp_agile_ch13/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (13)">Next
+                        <a href="/post/csharp_agile_ch15/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (15)">Next
                             Post &rarr;</a>
                     </li>
                     

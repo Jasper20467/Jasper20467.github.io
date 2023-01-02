@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>Agile Principles Patterns Practices in C# (16)</title>
+      <link>/post/csharp_agile_ch16/</link>
+      <pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch16/</guid>
+      <description>物件圖 (UML - Object Diagram) ====== UML物件圖展示了在一個特定時刻取得的物件、關係和屬性值 1. 即時快照 當你需要展示系統在某個特定時刻或某個特定狀態下的內部結構時</description>
+    </item>
+    
+    <item>
       <title>Agile Principles Patterns Practices in C# (12)</title>
       <link>/post/csharp_agile_ch12/</link>
       <pubDate>Mon, 12 Dec 2022 00:00:00 +0000</pubDate>
