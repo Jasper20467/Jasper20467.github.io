@@ -107,18 +107,18 @@ namespace TreeMap
 ## 1. 類別圖 (class diagram)
 - 展示了程式中主要的類別和關係
 - 和箭頭相鄰的字數表示包含的實例個數，意味著某種容器，通常是陣列。
-![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_2.png.png)
+![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_2.png)
 
 - 所有關係都是關聯(association)關係。關聯是簡單的資料關係，其中一個物件"持有對另一個物件的參考"或"呼叫了其方法"
 
 ## 2. 物件圖 (object diagram)
 - 展示了系統執行時，某個特定時刻的一種物件和關係。可以把它看作是一個記憶體快照。
-![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_3.png.png)
+![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_3.png)
 - key變數的物件之間的關係稱為鏈(link)，鏈是針對nodes陣列中的兩個陣列單元(array cell)來命名。
 
 ## 3. 循序圖 (sequence diagram)
 - 為了清楚地表達出訊息的順序
-![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_4.png.png)
+![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_4.png)
 - 描繪了TreeMap.Add方法是如何實作的
 - 方括號[]當中為布林函式稱為監護條件(guard)
 - 終結在TreeMapNode圖示上的訊息箭頭表示物件建造(construction)
@@ -127,7 +127,7 @@ namespace TreeMap
 
 ## 4. 協作圖 (collaboration diagram)
 - 為了清楚地表達物件之間的關係
-![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_5.png.png)
+![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_5.png)
 - 小箭頭表示在鏈上傳遞的訊息
 - 帶點的順序號碼表示呼叫的層次結構。TreeMap.Add(1)呼叫了TreeMapNode.Add函式(1.1)
 
@@ -135,7 +135,7 @@ namespace TreeMap
 - 對於理解系統的行為非常有用
 - 可以研究系統在未預料到的情況下，該如何動作。
 能夠全面地表達有限狀態機(finite state machine: FSM)
-![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_6.png.png)
+![](/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_6.png)
 - 有兩個狀態(status): Locked、Unlocked
 - 可以向機器發送兩個事件(event)，coin事件代表使用者已經向旋轉門投入一個硬幣;pass事件代表使用者已經通過旋轉門
 
