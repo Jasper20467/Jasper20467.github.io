@@ -10,10 +10,6 @@ tags:        ["Docker","AWS"]
 categories:  ["Tech" ]
 ---
 
-## Demo 概觀
-
-建立Python Flask 輕量化 API，並打包程Docker Image 上傳Docker Hub，最後佈屬於AWS Ec2 Instance，確認可連線
-
 ##  建立Python Flask API 
 
 Flask 是一個輕量化的Python 後端API套件，請參考一下Demo code 建立Python API。
