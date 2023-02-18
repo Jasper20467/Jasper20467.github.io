@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (1)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (1)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (1)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (1)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch1/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (1)</h1>
+                    <h2 class="subheading">敏捷軟體開發宣言</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Thursday, December 1, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-個人與互動-重於-程序與工具">1. 個人與互動 重於 程序與工具</a></li>
+        <li><a href="#2-可用的軟體-重於-詳盡的文件">2. 可用的軟體 重於 詳盡的文件</a></li>
+        <li><a href="#3-與客戶合作-重於-合約的談判">3. 與客戶合作 重於 合約的談判</a></li>
+        <li><a href="#4-回應變化-重於-遵循計畫">4. 回應變化 重於 遵循計畫</a></li>
+      </ul>
+    </li>
+    <li><a href="#原則">原則</a></li>
+  </ul>
+</nav>
+                
+                <h2 id="1-個人與互動-重於-程序與工具">1. 個人與互動 重於 程序與工具</h2>
+<ul>
+<li>人是獲得成功最關鍵的因素</li>
+<li>正確的工具 =&gt; 先用小工具開始，直到他無法適用。不要認為更大的工具會自動幫你把工作得更好，通常它造成的阻礙大於幫助。</li>
+</ul>
+<h2 id="2-可用的軟體-重於-詳盡的文件">2. 可用的軟體 重於 詳盡的文件</h2>
+<ul>
+<li>文件短小 - 代表最多大概不超過一二十頁</li>
+<li>凸顯主題 - 則是僅限於論述系統的最高層結構和概括設計原理</li>
+<li><strong>最好的兩份文件是 程式碼 與 團隊</strong></li>
+<li><em>Martin&rsquo;s First Law of Documention</em>
+直到迫切需要且意義重大時，才撰寫文件</li>
+</ul>
+<h2 id="3-與客戶合作-重於-合約的談判">3. 與客戶合作 重於 合約的談判</h2>
+<ul>
+<li>成功的專案需要定期且頻繁的客戶回饋，絕不是依賴合約和關係工作的那些陳述。關鍵是讓軟體的客戶和開發團隊緊密地工作在一起，並盡可能經常地提供回饋。</li>
+</ul>
+<h2 id="4-回應變化-重於-遵循計畫">4. 回應變化 重於 遵循計畫</h2>
+<ul>
+<li>做計劃時，較好的策略是：為下一周作詳細的計畫，為下3個月做粗略的計畫，在往後一年只做極為簡略的計畫。</li>
+</ul>
+<hr>
+<h1 id="原則">原則</h1>
+<ol>
+<li>我們最優先的任務，是透過及早且持續地交付有價值的軟體來滿足客戶的需求。</li>
+<li>我們竭誠歡迎客戶改變需求，即便已經到了開發後期亦然。敏捷程式能夠駕馭變更，為客戶創造競爭優勢。</li>
+<li>經常交付可以工作的軟體，交付頻率可以從幾個星期到幾個月，而時間間隔是越短越好</li>
+<li>業務人員與開發人員必須在專案開發的工程中，天天在一起工作。</li>
+<li>依靠鬥志高昂的人來建置專案，並給予他們所需的環境和支援，信任他們能夠完成工作。</li>
+<li>在團隊內部，效率最高且效果最佳的資訊傳遞方式，是面對面的交談。</li>
+<li>可工作的軟體是進度最主要量測(度量)標準</li>
+<li>敏捷程式提倡可持續的開發，贊助者、開發者和使用者應當總是保持穩定的開發速度。</li>
+<li>持續追求卓越的技術和良好設計，將有助於提高敏捷性。</li>
+<li>精簡 - 將未完成的工作量最大化的技藝 - 是不可或缺的。(今天以最高品質完成最簡單工作)</li>
+<li>最佳的架構、需求與設計都源自於能夠自我組織的團隊。</li>
+<li>每隔一段固定的時間，團隊會定期檢討如何更有效率，然後依照檢討結果，適當地調整與修正自己的行為。</li>
+</ol>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/hugo-basic/" data-toggle="tooltip" data-placement="top" title="Hugo Basic">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch2/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (2)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

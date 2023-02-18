@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (4)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (4)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (4)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (4)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch4/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (4)</h1>
+                    <h2 class="subheading">測試</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Sunday, December 4, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-測試驅動開發">1. 測試驅動開發</a></li>
+        <li><a href="#2-先寫測試的例子">2. 先寫測試的例子</a></li>
+        <li><a href="#2-測試促使模組之間隔離">2. 測試促使模組之間隔離</a></li>
+        <li><a href="#3-驗收測試">3. 驗收測試</a></li>
+        <li><a href="#4-總結">4. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h2 id="1-測試驅動開發">1. 測試驅動開發</h2>
+<ul>
+<li>
+<p>開發原則</p>
+<ul>
+<li>在撰寫一個單元測試前，不撰寫任何的程式碼</li>
+<li>只撰寫剛好無法通過的單元測試，不能編譯也算無法通過</li>
+<li>只撰寫剛好能通過測試失敗的產品程式碼</li>
+</ul>
+</li>
+<li>
+<p>先撰寫測試，有助於設計出便於呼叫 (Conveniently callable) 的軟體</p>
+</li>
+<li>
+<p>迫使自己將產品程式設計成可測試的 (testable) ，有助於去除軟體間的耦合</p>
+</li>
+<li>
+<p>測試可以作為一個重要的說明文件，亦可作為程式的範例來使用。</p>
+</li>
+</ul>
+<h2 id="2-先寫測試的例子">2. 先寫測試的例子</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#50fa7b">[Test]</span>
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> TestMove()
+{
+	WumpusGame g = <span style="color:#ff79c6">new</span> WumpusGame();
+	g.Connect(<span style="color:#bd93f9">4</span>,<span style="color:#bd93f9">5</span>,<span style="color:#f1fa8c">&#34;E&#34;</span>);
+	g.GetPlayerRoom(<span style="color:#bd93f9">4</span>);
+	g.East();
+	Assert.AreEqual(<span style="color:#bd93f9">5</span>,g.GetPlayerRoom());
+}
+</code></pre></div><ul>
+<li>先在測試中陳述意圖，並使意圖盡可能的簡單、易讀。基於測試驅動開發的原則，將有助於對於產品程式的設計
+<ul>
+<li>例如在此例中就可以簡化對於Room類別的建構。</li>
+</ul>
+</li>
+<li>先寫測試的行為就是在各種設計決策中，進行辨別的行為。</li>
+</ul>
+<h2 id="2-測試促使模組之間隔離">2. 測試促使模組之間隔離</h2>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter4_Test/test_1.png" alt="">
+
+</p>
+<blockquote>
+<p>耦合在一起的薪水支付應用模型</p>
+</blockquote>
+<ul>
+<li>
+<p>可能問題</p>
+<ul>
+<li>對資料庫的溝通? 需要撰寫完整資料庫功能?</li>
+<li>如何驗證支票的正確性?</li>
+</ul>
+</li>
+<li>
+<p>Mock Object 的設計</p>
+</li>
+</ul>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter4_Test/test_2.png" alt="">
+
+</p>
+<blockquote>
+<p>使用Mock Object 來測試，解除了耦合的薪水支付模型</p>
+</blockquote>
+<ul>
+<li>透過Mock Object 作為介面的替身使用</li>
+<li>透過Mock Object 去驗證/測試介面的工作</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#50fa7b">[Test]</span>
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> TessPayroll()
+{
+	MockEmployeeDataBase db = <span style="color:#ff79c6">new</span> MockEmployeeDataBase();
+    MockCheckWriter w = <span style="color:#ff79c6">new</span> MockCheckWriter();
+    Payroll p = <span style="color:#ff79c6">new</span> Payroll(db,w);
+    p.PayEmployees();
+    Assert.IsTrue(w.ChecksWereWrittenCorrectly());
+    Assert.IsTrue(db.PaymentWerePostedCorrectly());
+}
+</code></pre></div><ul>
+<li>意外獲得的解耦合
+<ul>
+<li>為了設計可以被測試的程式，迫使對模組進行了隔離，增加了應用的擴展性。</li>
+<li>在撰寫程式碼之前，寫測試改善了設計。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-驗收測試">3. 驗收測試</h2>
+<ul>
+<li>
+<p>驗收當系統是作為一個整體時的工作正確性</p>
+</li>
+<li>
+<p>單元測試 : 驗證系統中單個機制的白盒測試</p>
+</li>
+<li>
+<p>驗收測試 : 驗證系統滿足客戶需求的黑盒測試</p>
+</li>
+<li>
+<p>驗收測試是真正的需求文件</p>
+<ul>
+<li>有關乎系統的可編譯性，可執行性的說明文件。</li>
+</ul>
+</li>
+<li>
+<p>先寫驗收測試的重要性</p>
+<ul>
+<li>為了使系統具備可測試性，需要在較高的系統架構層面對系統進行解耦。</li>
+<li>自動化驗收系統可做為對系統進行解耦的動力</li>
+</ul>
+</li>
+<li>
+<p>意外獲得的架構</p>
+<ul>
+<li>在此例中為了把薪水支付系統設計成一個可重用的架構，對應使用的方法就是API函式。</li>
+<li>透過API 完成功能，用以解耦</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-總結">4. 總結</h2>
+<ul>
+<li>
+<p>測試套件運行起來越簡單，就越會被頻繁的執行，測試的越多，就會越快的發現與測試背離的事。</p>
+</li>
+<li>
+<p>單元測試和驗收測試都可作為一種說明文件的形式存在。</p>
+</li>
+<li>
+<p>傳寫測試所使用的語言是明確的：</p>
+<ul>
+<li>單元測試使用程式語言撰寫，程式設計師可以閱讀</li>
+<li>驗收測試使用間單的表格語言撰寫，客戶能夠閱讀驗收測試</li>
+</ul>
+</li>
+<li>
+<p>測試對架構和設計有重大的影響，為了使模組或程式具備可測試性，必須要對其進行解耦，優化產品程式的架構設計</p>
+</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch3/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (3)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch5/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (5)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

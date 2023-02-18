@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (7)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (7)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (7)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (7)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch7/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (7)</h1>
+                    <h2 class="subheading">敏捷設計</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Wednesday, December 7, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#agile-design">Agile Design</a>
+      <ul>
+        <li><a href="#1-設計臭味-code-smell">1. 設計臭味 Code Smell</a></li>
+        <li><a href="#2-軟體為何會腐化">2. 軟體為何會腐化</a></li>
+        <li><a href="#3-範例--copy程式">3. 範例 -Copy程式</a></li>
+        <li><a href="#4-總結">4. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h1 id="agile-design">Agile Design</h1>
+<blockquote>
+<p>什麼是敏捷設計
+實際能滿足工程設標準的軟體說明文件，就只有原始程式碼清單</p>
+</blockquote>
+<h2 id="1-設計臭味-code-smell">1. 設計臭味 Code Smell</h2>
+<ul>
+<li>設計臭味
+<ul>
+<li>僵化性 (Rigidity)</li>
+<li>脆弱性 (Fragility)</li>
+<li>頑固性 (Immobility)</li>
+<li>黏滯性 (Viscosity)</li>
+<li>不必要的複雜性 (Needless complexity)</li>
+<li>不必要得重複 (Needless repetition)</li>
+<li>晦澀姓 (Opacity)</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>僵化性 (Rigidity)
+<ul>
+<li>僵化性指難以對軟體進行修改，如果單一修改會導致有依賴關係的模組有異動，那設計就是僵化的。</li>
+</ul>
+</li>
+<li>脆弱性 (Fragility) - 在進行一個修改時，可能會導致程式的許多地方出現問題。</li>
+<li>頑固性 (Immobility) - 設計中包含了對其他系統有用的部分，但是要把這些部分從系統中分離來所需要的努力和風險卻是巨大的。</li>
+<li>黏滯性 (Viscosity) - 軟體的黏滯性和環境的黏滯性
+<ul>
+<li>當可以保持系統原設計的方式比拼湊方式更難以實現時，就代表原設計有高的黏滯性。我們希望把它設計成面對修改時，仍就容易保持原設計。</li>
+</ul>
+</li>
+<li>不必要的複雜性 (Needless complexity) - 如果設計中包含了目前沒有用處的組成部分，它就含有不必要的複雜性。</li>
+<li>不必要得重複 (Needless repetition) - 當同樣的程式碼以些微不同形式一再出現時，就代表開發人員忽略了抽象。發現所有重複並透過適當的抽象去除它們，有助於使系統更容易理解和維護。</li>
+<li>晦澀姓 (Opacity) - 指模組難以理解，開發人員必須站在程式閱讀者的角度，努力對程式碼進行重構，使得閱讀者能夠理解程式碼。</li>
+</ol>
+<h2 id="2-軟體為何會腐化">2. 軟體為何會腐化</h2>
+<ul>
+<li>如果我們的設計由於持續、大量的需求變化而失敗，那就代表我們的設計和實踐本身是有缺陷的。</li>
+<li>團隊幾乎不進行預先設計，因此，不需要一個成熟的初始設計。反之，他們傾向於讓系統設計盡可能的乾淨和簡單，並使用許多單元測試和驗收程式作為支援。</li>
+</ul>
+<h2 id="3-範例--copy程式">3. 範例 -Copy程式</h2>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter7_Agile/7_1.png" alt="">
+
+</p>
+<p>Listing 7-1 Copy 程式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Copier</span>
+{
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> Copy()
+	{
+		<span style="color:#8be9fd">int</span> c;
+		<span style="color:#ff79c6">while</span> (c=Keyboard.Read() != -<span style="color:#bd93f9">1</span>)
+			Printer.Write(c);
+	}
+}
+</code></pre></div><p>Listing 7-2 Copy 程式第一次修改</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Copier</span>
+{
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">bool</span> ptFlag = <span style="color:#ff79c6">false</span>;
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> Copy()
+	{
+		<span style="color:#8be9fd">int</span> c;
+		<span style="color:#ff79c6">while</span> (c=(ptFlag ? PaperTape.Read() : Keyboard.Read()) != -<span style="color:#bd93f9">1</span>)
+			Printer.Write(c);
+	}
+}
+</code></pre></div><p>Listing 7-3 Copy 程式第二次修改</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Copier</span>
+{
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">bool</span> ptFlag = <span style="color:#ff79c6">false</span>;
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">bool</span> punchFlag = <span style="color:#ff79c6">false</span>;
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> Copy()
+	{
+		<span style="color:#8be9fd">int</span> c;
+		<span style="color:#ff79c6">while</span> (c=(ptFlag ? PaperTape.Read() : Keyboard.Read()) != -<span style="color:#bd93f9">1</span>)
+			punchFlag ? PaperTape.Punch(c) : Printer.Write(c);
+	}
+}
+</code></pre></div><p>Listing 7-4 Copy 程式敏捷版本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">interface</span> Reader
+{
+	<span style="color:#8be9fd">int</span> Read();
+}
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">KeyboardReader</span> : Reader
+{
+	<span style="color:#ff79c6">public</span> <span style="color:#8be9fd">int</span> Read() { <span style="color:#ff79c6">return</span> Keyboard.Read();}
+}
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Copier</span>
+{
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> Reader reader = <span style="color:#ff79c6">new</span> KeyboardReader();
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> Copy()
+	{
+		<span style="color:#8be9fd">int</span> c;
+		<span style="color:#ff79c6">while</span> ((c=reader.Read()) != -<span style="color:#bd93f9">1</span>)
+			Printer.Write(c);
+	}
+}
+</code></pre></div><ul>
+<li>敏捷開發人員遵循了以下的步驟</li>
+</ul>
+<ol>
+<li>他們遵循敏捷實踐去發現問題</li>
+<li>它們應用設計原則(Principle)去診斷問題</li>
+<li>它們應用適當的設計模式(Design Pattern)去解決問題</li>
+</ol>
+<h2 id="4-總結">4. 總結</h2>
+<ul>
+<li>敏捷設計是一個過程(process)，不是事件(event)。它是一個持續應用原則、模式及實踐，來改進軟體結構和可讀性。它致力保持系統設計在任何時間都盡可能地簡單、乾淨並富有表達力。</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch6/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (6)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch8/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (8)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

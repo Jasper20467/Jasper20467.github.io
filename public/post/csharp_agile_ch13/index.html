@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (13)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (13)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (13)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (13)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch13/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (13)</h1>
+                    <h2 class="subheading">UML - 概述</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Wednesday, December 28, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#uml概述">UML概述</a>
+      <ul>
+        <li></li>
+        <li><a href="#1-類別圖-class-diagram">1. 類別圖 (class diagram)</a></li>
+        <li><a href="#2-物件圖-object-diagram">2. 物件圖 (object diagram)</a></li>
+        <li><a href="#3-循序圖-sequence-diagram">3. 循序圖 (sequence diagram)</a></li>
+        <li><a href="#4-協作圖-collaboration-diagram">4. 協作圖 (collaboration diagram)</a></li>
+        <li><a href="#5-狀態圖-state-diagram">5. 狀態圖 (state diagram)</a></li>
+        <li><a href="#5-總結">5. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h1 id="uml概述">UML概述</h1>
+<blockquote>
+<p>統一塑模語言 Unified Modeling Language 是用來繪製軟體概念圖的一種圖形符號</p>
+</blockquote>
+<h3 id="分為三個層次的模型">分為三個層次的模型</h3>
+<ol>
+<li>概念層級 (conceptual)</li>
+</ol>
+<ul>
+<li>一種速記方法，和原始碼沒有強烈關係，繪製存在人類問題的概念與抽象。</li>
+</ul>
+<ol start="2">
+<li>規格說明層級 (spectification)</li>
+</ol>
+<ul>
+<li>目的是為了能夠將之轉換為原始程式碼</li>
+</ul>
+<ol start="3">
+<li>實作層級 (implementation)</li>
+</ol>
+<ul>
+<li>為了描繪已有的原始程式碼</li>
+</ul>
+<h3 id="uml包含3種主要的圖示">UML包含3種主要的圖示</h3>
+<ol>
+<li>靜態圖 (static diagram)</li>
+</ol>
+<ul>
+<li>描述了類別、物件、資料結構及它們之間的關係，展現軟體元素間不變的邏輯結構</li>
+</ul>
+<ol start="2">
+<li>動態圖 (dynamic diagram)</li>
+</ol>
+<ul>
+<li>展現軟體實體在執行過程中是如何變化的，描述執行流程或實體改變狀態的方式</li>
+</ul>
+<ol start="3">
+<li>實體圖 (physical diagram)</li>
+</ol>
+<ul>
+<li>展示了軟體實體不變的物理結構，描述如原始檔、程式庫、二進位檔、資料檔等物理實體(physical entities)及它們的關係</li>
+</ul>
+<p>Listing 13-1 TreeMap.cs 實現一個簡單二元數演算法的映射(Map)資料結構</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">using</span> System;
+
+<span style="color:#ff79c6">namespace</span> TreeMap
+{
+	<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">TreeMap</span>
+	{
+		<span style="color:#ff79c6">private</span> TreeMapNode topNode = <span style="color:#ff79c6">null</span>;
+
+		<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Add(IComparable Key, <span style="color:#8be9fd">object</span> <span style="color:#ff79c6">value</span>)
+		{
+			<span style="color:#ff79c6">if</span> (topNode == <span style="color:#ff79c6">null</span>)
+				topNode = <span style="color:#ff79c6">new</span> TreeMapNode(key, <span style="color:#ff79c6">value</span>);
+			<span style="color:#ff79c6">else</span>
+				topNode.Add(key, <span style="color:#ff79c6">value</span>);
+		}
+
+		<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Get(IComparable Key)
+		{
+			<span style="color:#ff79c6">return</span> topNode == <span style="color:#ff79c6">null</span> ? <span style="color:#ff79c6">null</span> : topNode.Find(key);
+		}
+	}
+
+	<span style="color:#ff79c6">internal</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">TreeMapNode</span>
+	{
+		<span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">readonly</span> <span style="color:#8be9fd">int</span> LESS = <span style="color:#bd93f9">0</span>;
+		<span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">readonly</span> <span style="color:#8be9fd">int</span> GREATER = <span style="color:#bd93f9">1</span>;
+		<span style="color:#ff79c6">private</span> IComparable key;
+		<span style="color:#ff79c6">private</span> <span style="color:#8be9fd">object</span> <span style="color:#ff79c6">value</span>;
+		<span style="color:#ff79c6">private</span> TreeMapNode[] nodes = <span style="color:#ff79c6">new</span> TreeMapNode[<span style="color:#bd93f9">2</span>];
+		
+		<span style="color:#ff79c6">public</span> TreeMapNode(IComparable key, <span style="color:#8be9fd">object</span> <span style="color:#ff79c6">value</span>)
+		{
+			<span style="color:#ff79c6">this</span>.key;
+			<span style="color:#ff79c6">this</span>.<span style="color:#ff79c6">value</span>;
+		}
+
+		<span style="color:#ff79c6">public</span> <span style="color:#8be9fd">object</span> Find(IComparable key)
+		{
+			<span style="color:#ff79c6">if</span> (key.CompareTo(<span style="color:#ff79c6">this</span>.key) == <span style="color:#bd93f9">0</span>) <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">value</span>;
+			<span style="color:#ff79c6">return</span> FindSubNodeForKey(SelectSubNode(key), key);
+		}
+
+		<span style="color:#ff79c6">private</span> <span style="color:#8be9fd">int</span> SelectSubNode(IComparable key)
+		{
+			<span style="color:#ff79c6">return</span> (key.CompareTo(<span style="color:#ff79c6">this</span>.key) &lt; <span style="color:#bd93f9">0</span>) ? LESS : GREATER;
+		}
+
+		<span style="color:#ff79c6">private</span> <span style="color:#8be9fd">int</span> FindSubNodeForKey(<span style="color:#8be9fd">int</span> node, IComparable key)
+		{
+			<span style="color:#ff79c6">return</span> nodes[node] == <span style="color:#ff79c6">null</span> ? <span style="color:#ff79c6">null</span> : nodes[node].Find(key);
+		}
+
+		<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Add(IComparable key, <span style="color:#8be9fd">object</span> <span style="color:#ff79c6">value</span>)
+		{
+			<span style="color:#ff79c6">if</span> (key.CompareTo(<span style="color:#ff79c6">this</span>.key) == <span style="color:#bd93f9">0</span>)
+				<span style="color:#ff79c6">this</span>.<span style="color:#ff79c6">value</span> = <span style="color:#ff79c6">value</span>;
+			<span style="color:#ff79c6">else</span>
+				AddSubNode(SelectSubNode(key), key, <span style="color:#ff79c6">value</span>);		
+		}
+
+		<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> AddSubNode(<span style="color:#8be9fd">int</span> node, IComparable key, <span style="color:#8be9fd">object</span> <span style="color:#ff79c6">value</span>)
+		{
+			<span style="color:#ff79c6">if</span> (nodes[node] == <span style="color:#ff79c6">null</span>)
+				nodes[node] == <span style="color:#ff79c6">new</span> TreeMapNode(key, <span style="color:#ff79c6">value</span>);
+			<span style="color:#ff79c6">else</span>
+				nodes[node].Add(key, <span style="color:#ff79c6">value</span>);		
+		}
+	}
+}
+</code></pre></div><h2 id="1-類別圖-class-diagram">1. 類別圖 (class diagram)</h2>
+<ul>
+<li>
+<p>展示了程式中主要的類別和關係</p>
+</li>
+<li>
+<p>和箭頭相鄰的字數表示包含的實例個數，意味著某種容器，通常是陣列。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_2.png" alt="">
+
+</p>
+</li>
+<li>
+<p>所有關係都是關聯(association)關係。關聯是簡單的資料關係，其中一個物件&quot;持有對另一個物件的參考&quot;或&quot;呼叫了其方法&quot;</p>
+</li>
+</ul>
+<h2 id="2-物件圖-object-diagram">2. 物件圖 (object diagram)</h2>
+<ul>
+<li>展示了系統執行時，某個特定時刻的一種物件和關係。可以把它看作是一個記憶體快照。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_3.png" alt="">
+
+</li>
+<li>key變數的物件之間的關係稱為鏈(link)，鏈是針對nodes陣列中的兩個陣列單元(array cell)來命名。</li>
+</ul>
+<h2 id="3-循序圖-sequence-diagram">3. 循序圖 (sequence diagram)</h2>
+<ul>
+<li>為了清楚地表達出訊息的順序
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_4.png" alt="">
+
+</li>
+<li>描繪了TreeMap.Add方法是如何實作的</li>
+<li>方括號[]當中為布林函式稱為監護條件(guard)</li>
+<li>終結在TreeMapNode圖示上的訊息箭頭表示物件建造(construction)</li>
+<li>小圓圈箭頭稱為資料標記(data token)</li>
+<li>窄矩形長條稱會啟動(activation)，代表Add方法執行了多少時間</li>
+</ul>
+<h2 id="4-協作圖-collaboration-diagram">4. 協作圖 (collaboration diagram)</h2>
+<ul>
+<li>為了清楚地表達物件之間的關係
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_5.png" alt="">
+
+</li>
+<li>小箭頭表示在鏈上傳遞的訊息</li>
+<li>帶點的順序號碼表示呼叫的層次結構。TreeMap.Add(1)呼叫了TreeMapNode.Add函式(1.1)</li>
+</ul>
+<h2 id="5-狀態圖-state-diagram">5. 狀態圖 (state diagram)</h2>
+<ul>
+<li>對於理解系統的行為非常有用</li>
+<li>可以研究系統在未預料到的情況下，該如何動作。
+能夠全面地表達有限狀態機(finite state machine: FSM)
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter13_UML/13_6.png" alt="">
+
+</li>
+<li>有兩個狀態(status): Locked、Unlocked</li>
+<li>可以向機器發送兩個事件(event)，coin事件代表使用者已經向旋轉門投入一個硬幣;pass事件代表使用者已經通過旋轉門</li>
+</ul>
+<h2 id="5-總結">5. 總結</h2>
+<ul>
+<li>本章節的圖示對於大多數的場合來說已經足夠了。</li>
+<li>大多數程式設計師了解這麼多的UML知識就足以應付實際的工作需求。</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch15/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (15)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch14/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (14)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

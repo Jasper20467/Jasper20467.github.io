@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (11)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (11)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (11)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (11)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch11/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (11)</h1>
+                    <h2 class="subheading">SOLID -  依賴反轉原則</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Sunday, December 11, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#dependency-inversion-principle"><strong>D</strong>ependency <strong>I</strong>nversion <strong>P</strong>rinciple</a>
+      <ul>
+        <li><a href="#1-層次化-layering">1. 層次化 (Layering)</a></li>
+        <li><a href="#2-簡單的dip範例">2. 簡單的DIP範例</a></li>
+        <li><a href="#3-熔爐案例">3. 熔爐案例</a></li>
+        <li><a href="#4-總結">4. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h1 id="dependency-inversion-principle"><strong>D</strong>ependency <strong>I</strong>nversion <strong>P</strong>rinciple</h1>
+<blockquote>
+<p>高層模組不應該依賴於(相依於)低層模組。二者都應該依賴於抽象
+抽象不應該依賴於細節，細節應該依賴於抽象。</p>
+</blockquote>
+<ul>
+<li>一個設計良好的物件導向程式，相對於傳統程式設計而言，其依賴的結構是&quot;被反向&quot;的。</li>
+<li>我們希望能重複使用的是高層的設定策略模組，我們已經非常擅長透過副程式庫的方式來重複使用低層模組。如果高層模組依賴於低層模組，那麼不同的上下文中重複使用高層模組就變得非常困難。</li>
+<li>如果高層模組獨立於低層模組，那麼高層模組就可以容易被重複使用，這個就是框架設計(framework design)的核心原則。</li>
+</ul>
+<h2 id="1-層次化-layering">1. 層次化 (Layering)</h2>
+<ol>
+<li>
+<p>圖11-1，高層的Policy曾使用了低層的Mechanism層，而Mechanism層又使用更細節的Utility層。看起來似乎正確，但它存在&quot;依賴關係是遞移的&quot;。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter11_DIP/11_1.png" alt="">
+
+</p>
+</li>
+<li>
+<p>圖11-2，展示一個更適合的模型，每個較高層次都為他所需要的服務宣告一個抽象介面。較低的層次實現了這些抽象介面。每個高層類別都透過該抽象介面來使用下一層。這樣高層就不會依賴於低層，低層反而依賴於高層中宣告的抽象服務介面。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter11_DIP/11_2.png" alt="">
+
+</p>
+</li>
+<li>
+<p>反向介面所有權</p>
+</li>
+</ol>
+<ul>
+<li>這裡的反向，不僅僅是依賴關係的反向。它也是介面所有權的反向。客戶擁有抽象介面，而它們的服務者則從這些抽象介面衍生。</li>
+<li>Hollywood原則 - Don&rsquo;t call us, we&rsquo;ll call you.
+=&gt; 低層模組實作了&quot;在高層模組中宣告並被高層模組呼叫的介面&quot;</li>
+</ul>
+<ol start="4">
+<li>依賴於抽象</li>
+</ol>
+<ul>
+<li>任何變數都不應該持有一個指向具體類別的參考</li>
+<li>任何類別都不應該從具體類別衍生出來</li>
+<li>任何方法都不應該改寫&quot;它的任何基底類別中已經實作的方法&quot;</li>
+</ul>
+<h2 id="2-簡單的dip範例">2. 簡單的DIP範例</h2>
+<p>依賴反向可應用在任何&quot;存在一個類別向另一個類別發送訊息&quot;的地方。例如，Button物件和Lamp物件之間的情形。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter11_DIP/11_3.png" alt="">
+
+</p>
+<p>Listing 11-1 Button.cs</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">Button</span>
+{
+    <span style="color:#ff79c6">private</span> Lamp lamp;
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Poll()
+    {
+        <span style="color:#ff79c6">if</span> ( <span style="color:#6272a4">/* 一些條件 */</span>)
+            lamp.TurnOn();
+    }
+}
+</code></pre></div><ol>
+<li>找出潛在的抽象
+什麼是高層策略?它是應用背後的抽象，是那些不隨具體細節改變的真理。
+它是系統內部的系統 - 它是隱喻 (metaphore)
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter11_DIP/11_4.png" alt="">
+
+</li>
+</ol>
+<ul>
+<li>圖11-4中設計可使Button控制那些願意實作ButtonServer介面的任何設備。這賦予我們極大靈活性，同時也意味著，Button物件將能控制還沒有被創造出來的物件。</li>
+</ul>
+<h2 id="3-熔爐案例">3. 熔爐案例</h2>
+<ul>
+<li>一個控制熔爐(furnace)調節器的軟體，該軟體可以從一個I/O通道中讀取目前的溫度，並透過向另一個I/O通道發命令來指示熔爐的開或關。演算法如Listing 11-2</li>
+</ul>
+<p>Listing 11-2 溫度調節器的簡單演算法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">const</span> <span style="color:#8be9fd">byte</span> TERMOMETER = <span style="color:#bd93f9">0X86</span>;
+<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">byte</span> FURNACE = <span style="color:#bd93f9">0X87</span>;
+<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">byte</span> ENGAGE = <span style="color:#bd93f9">1</span>;
+<span style="color:#ff79c6">const</span> <span style="color:#8be9fd">byte</span> DISENGAGE = <span style="color:#bd93f9">0</span>;
+
+<span style="color:#ff79c6">void</span> Regulate (<span style="color:#8be9fd">double</span> minTemp, <span style="color:#8be9fd">double</span> maxTemp)
+{
+    <span style="color:#ff79c6">for</span>(;;)
+    {
+        <span style="color:#ff79c6">while</span> (<span style="color:#ff79c6">in</span>(TERMOMETER) &gt; minTemp)
+            wait(<span style="color:#bd93f9">1</span>);
+        <span style="color:#ff79c6">out</span>(FURNACE, ENGAGE);
+
+        <span style="color:#ff79c6">while</span> (<span style="color:#ff79c6">in</span>(TERMOMETER) &lt; maxTemp)
+            wait(<span style="color:#bd93f9">1</span>);
+        <span style="color:#ff79c6">out</span>(FURNACE, DISENGAGE);
+    }
+}
+</code></pre></div><ul>
+<li>
+<p>演算法高層意圖清楚，但實現的程式碼中卻夾雜許多低層細節。這段程式碼根本不能重複使用在不同的控制硬體。我們寧可將這種依賴關係反向，如圖11-5。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter11_DIP/11_5.png" alt="">
+
+</p>
+</li>
+<li>
+<p>這就將依賴關係反向了。使得高層的調節策略不在依賴於任何溫度計或熔爐的特定細節。此演算法有更好的在使用性。</p>
+</li>
+</ul>
+<p>Listing 11-3 通用的調節器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">void</span> Regulate (Thermometer t, Heater h, <span style="color:#8be9fd">double</span> minTemp, <span style="color:#8be9fd">double</span> maxTemp)
+{
+    <span style="color:#ff79c6">for</span>(;;)
+    {
+        <span style="color:#ff79c6">while</span> (t.Read() &gt; minTemp)
+            wait(<span style="color:#bd93f9">1</span>);
+        h.Engage();
+
+        <span style="color:#ff79c6">while</span> (t.Read() &lt; maxTemp)
+            wait(<span style="color:#bd93f9">1</span>);
+        h.Disengage();
+    }
+}
+</code></pre></div><h2 id="4-總結">4. 總結</h2>
+<ol>
+<li>物件導向的程式設計反向了依賴式結構，使得&quot;細節和策略都依賴於抽象&quot;，並且通常是&quot;客戶程式擁有服務介面&quot;</li>
+<li>物件導向設計 =&gt; 程式的依賴關係是反向的; 程序化設計 =&gt; 程式的依賴關係不是反向。</li>
+<li>依賴反向原則是其用來實現基本低層的機制，正確應用於建立可重複使用的框架。</li>
+<li>由於抽象和細節隔離，所以程式碼也非常容易維護。</li>
+</ol>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch10/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (10)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch12/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (12)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

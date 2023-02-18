@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (3)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (3)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (3)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (3)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch3/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (3)</h1>
+                    <h2 class="subheading">計畫</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Saturday, December 3, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-初始探索">1. 初始探索</a></li>
+        <li><a href="#2-發布計畫">2. 發布計畫</a></li>
+        <li><a href="#3-iteration-計畫">3. Iteration 計畫</a></li>
+        <li><a href="#4-定義完成-demo">4. 定義完成 (Demo)</a></li>
+        <li><a href="#5-任務計畫">5. 任務計畫</a></li>
+        <li><a href="#6-追蹤-tracking">6. 追蹤 (Tracking)</a></li>
+        <li><a href="#7-總結">7. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h2 id="1-初始探索">1. 初始探索</h2>
+<ul>
+<li>專案開始時，開發人員和客戶只會商討系統的重要的特性，隨專案的進展，客戶會不斷地發現新的特性。當識別出一個特性時，會把它分解成一個或許多個使用者故事，除了故事的名字之外，無須記錄其他內容。</li>
+</ul>
+<ul>
+<li>探究、分解和速度</li>
+</ul>
+<ul>
+<li>過大或過小的故事都難以估算，過大的故事應該很解成小故事，過小的應該和其他的合併。</li>
+<li>例如: 使用者能夠安全地進行存款、取款、轉帳活動。 分解成以下故事
+<ol>
+<li>使用者可以登入</li>
+<li>使用者可以登出</li>
+<li>使用者可以向其他帳戶存款</li>
+<li>使用者可以從其他帳戶取款</li>
+<li>使用者可以從其他帳戶向其他帳戶轉帳</li>
+</ol>
+</li>
+<li>對使用者故事進行分解或合併完全是為了使其他小適用於&quot;被準確地估算&quot;</li>
+</ul>
+<h2 id="2-發布計畫">2. 發布計畫</h2>
+<ul>
+<li>如果知道了開發速度，客戶就能夠了解每個故事的成本及其商業價值和優先順序。根據這些，客戶就可以選擇那些想要最先完成的故事。此類選擇屬於商業決策範疇，由業務人員決定哪些故事會帶給它們最大的利益。</li>
+</ul>
+<h2 id="3-iteration-計畫">3. Iteration 計畫</h2>
+<ul>
+<li>規則很簡單: 每次的iteration作計畫時採用的速度，就是前一次iteration中測量出來的開發速度</li>
+<li>如果團隊在最近一次iteration中完成了31個故事點，那他們應該計畫在下一次iteration中也完成31點。開發速度(velocity)就是31 points/iteration</li>
+</ul>
+<h2 id="4-定義完成-demo">4. 定義完成 (Demo)</h2>
+<ul>
+<li>除非所有的驗收測試都通過，否則就不能說一個故事實現完成。</li>
+<li>這些驗收測試是自動執行的，驗收測試是由客戶、業務分析師、品質保證專家、測試人員甚至包括程式設計師，在每個iteration開始時一起撰寫。</li>
+</ul>
+<h2 id="5-任務計畫">5. 任務計畫</h2>
+<ul>
+<li>一個任務(task)就是一個開發人員能夠在4~16小時內實現的一些功能</li>
+<li>開發人員逐一簽訂他們想要實現的任務，並以點數對每項任務進行估算</li>
+<li>在iteration進行到一半時，團隊會召開一次會議，此時iteration所安排的半數應該要被完成。如果半數故數沒有被完成，那麼團隊會設法重新分配沒有完成的任務和職責，以確保在能完成所有的故事。</li>
+<li>如果在iteration結束時，90%任務已完成，但沒有一個故事是全部完成的，這是惡夢一般的情景。</li>
+</ul>
+<h2 id="6-追蹤-tracking">6. 追蹤 (Tracking)</h2>
+<ul>
+<li>對XP專案來說，追蹤和管理就是紀錄每次iteration的結果，然後使用這些預測後面幾次iteration的內容。</li>
+<li>速度圖 (velocity chart)，顯示在每週結束時，一共完成了多少個故事點。</li>
+<li>餘量圖 (burn-down chart)，顯示每一周後，還有多少點數需要在下個主要的里程碑或發布中完成。</li>
+</ul>
+<h2 id="7-總結">7. 總結</h2>
+<ul>
+<li>透過一次次iteration和發布，專案進入一種可預測、舒適的開發狀態。每個人都知道將要做什麼，以及何時去作。</li>
+<li>利益相關者能頻繁且實際地看到專案的進展，他們看到的不是畫滿了圖、寫滿了計畫的記事本，而是可接觸到、感覺得到的可工作軟體，並且對這個軟體提供回饋。</li>
+<li>開發人員看到的是，基於自己估算並且評估的開發速度控制合理的計畫，選擇自己感到舒適的任務，並保持工作品質。</li>
+<li>使用敏捷方法並不意味著利益相關者就能得到他們想要的，而是意味著他們將能夠控制團隊以最小的代價獲得最大的商業價值。</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch2/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (2)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch4/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (4)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

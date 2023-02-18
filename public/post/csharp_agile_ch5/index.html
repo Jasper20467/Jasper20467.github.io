@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (5)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (5)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (5)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (5)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch5/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (5)</h1>
+                    <h2 class="subheading">重構 Refactoring</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Monday, December 5, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-重構定義">1. 重構定義</a></li>
+        <li><a href="#2-產生質數的程式--一個簡單的重構範例">2. 產生質數的程式 : 一個簡單的重構範例</a></li>
+        <li><a href="#3-重構">3. 重構</a></li>
+        <li><a href="#4-總結">4. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h2 id="1-重構定義">1. 重構定義</h2>
+<ul>
+<li>在不改變程式碼外在行為的前提下，對程式碼做出修改，以改進程式碼內部結構的過程。</li>
+<li>每一個軟體模組都有三個職責
+<ol>
+<li>它運行時所達成的功能，也是該模組存在的原因</li>
+<li>它要應對變化。幾乎所有的模組在它們的生命週期期間都會發生改變，開發者有責任保證這種改變應該盡可能地簡單。一個難以改變的模組是有問題的，即便能夠工作，也需要對他進行修正。</li>
+<li>要讓閱讀者能夠理解。對該模組不熟悉的開發人員也應該能夠容易地閱讀並理解它。一個無法被理解的模組也是有問題的，同樣需要對它進行修正。</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-產生質數的程式--一個簡單的重構範例">2. 產生質數的程式 : 一個簡單的重構範例</h2>
+<p>Listing 5-1 GeneratePrimes.cs, version 1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#6272a4">/// &lt;remark&gt; 
+</span><span style="color:#6272a4">/// 這個類別產生使用者指定之最大值範圍內的質數。 
+</span><span style="color:#6272a4">/// 使用的演算法是Eratosthenes 篩選法。
+</span><span style="color:#6272a4">///
+</span><span style="color:#6272a4">/// Eratosthenes, 生於西元前276年利比亞的Cyrene,西元前194 年逝世於亞歷山大。 
+</span><span style="color:#6272a4">/// 他是第一個計算地球周長的人,也因研究考慮留年的曆法和掌管亞歷山大圖書館而聞名。 
+</span><span style="color:#6272a4">///
+</span><span style="color:#6272a4">/// 這個演算法非常簡單。先給定一個整數陣列,其內容由2開始遞增,先劃掉2的倍數。
+</span><span style="color:#6272a4">/// 然後找下一個尚未被劃掉的整數,去劃掉它的所有倍數。如此反覆執行到傳入之最大值的平方根為止。
+</span><span style="color:#6272a4">/// Written by Robert C. Martin on 9 Dec 1999 in Java /// Translated to C# by Micah Martin on 12 Jan 2005. 
+</span><span style="color:#6272a4">///&lt;/remark&gt;
+</span><span style="color:#6272a4"></span>
+<span style="color:#ff79c6">using</span> System;
+<span style="color:#6272a4">/// &lt;summary&gt; 
+</span><span style="color:#6272a4">/// author: Robert C. Martin 
+</span><span style="color:#6272a4">/// &lt;/summary&gt; 
+</span><span style="color:#6272a4"></span><span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">GeneratePrimes</span>
+{
+    <span style="color:#6272a4">/// &lt;summary&gt; 
+</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">/// 產生一個包含質數的陣列
+</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">/// &lt;/summary&gt;
+</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">///
+</span><span style="color:#6272a4"></span>    <span style="color:#6272a4">/// &lt;param name=&#34;maxValue&#34;&gt;產生的最大值&lt;/param&gt;
+</span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span>[] GeneratePrimeNumbers(<span style="color:#8be9fd">int</span> maxValue)
+    {
+        <span style="color:#ff79c6">if</span> (maxValue &gt;= <span style="color:#bd93f9">2</span>) <span style="color:#6272a4">// 僅在此時有意義
+</span><span style="color:#6272a4"></span>        {
+            <span style="color:#6272a4">// 宣告
+</span><span style="color:#6272a4"></span>            <span style="color:#8be9fd">int</span> s = maxValue + <span style="color:#bd93f9">1</span>; <span style="color:#6272a4">//陣列大小
+</span><span style="color:#6272a4"></span>            <span style="color:#8be9fd">bool</span> [] f = <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">bool</span>[s];
+            <span style="color:#8be9fd">int</span> i;
+
+            <span style="color:#6272a4">// 將陣列元素初始為true
+</span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">0</span>; i &lt; s; i++)
+                f[i] = <span style="color:#ff79c6">true</span>;
+            
+            <span style="color:#6272a4">// 去掉已知的非質數
+</span><span style="color:#6272a4"></span>            f[<span style="color:#bd93f9">0</span>] = f[<span style="color:#bd93f9">1</span>] = <span style="color:#ff79c6">false</span>;
+
+            <span style="color:#6272a4">// sieve (篩選 ; 過濾)
+</span><span style="color:#6272a4"></span>            <span style="color:#8be9fd">int</span> j;
+            <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">2</span>; i &lt; Math.Sqrt(s) + <span style="color:#bd93f9">1</span>; i++)
+            {
+                <span style="color:#ff79c6">if</span> (f[i]) <span style="color:#6272a4">// 如果i未被劃掉，就劃掉其倍數
+</span><span style="color:#6272a4"></span>                {
+                    <span style="color:#ff79c6">for</span> (j = <span style="color:#bd93f9">2</span> * i; j &lt; s; j +=i)
+                    f[j] = <span style="color:#ff79c6">false</span>; <span style="color:#6272a4">// 倍數不是質數
+</span><span style="color:#6272a4"></span>                }
+            }
+
+            <span style="color:#6272a4">// 有多少個質數?
+</span><span style="color:#6272a4"></span>            <span style="color:#8be9fd">int</span> count = <span style="color:#bd93f9">0</span>;
+            <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">0</span>; i &lt; s; i ++)
+            {
+                <span style="color:#ff79c6">if</span> (f[i])
+                    count++; <span style="color:#6272a4">// 累加
+</span><span style="color:#6272a4"></span>            }
+
+            <span style="color:#8be9fd">int</span> [] primes = <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span>[count];
+
+            <span style="color:#6272a4">// 把質數轉移到結果列中
+</span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">0</span>, j = <span style="color:#bd93f9">0</span>; i &lt; s; i++)
+            {
+                <span style="color:#ff79c6">if</span> (f[i]) <span style="color:#6272a4">// 若為質數
+</span><span style="color:#6272a4"></span>                    primes[j++] = i;
+            }
+
+            <span style="color:#ff79c6">return</span> primes; <span style="color:#6272a4">// 回傳primes結果陣列
+</span><span style="color:#6272a4"></span>        }
+        <span style="color:#ff79c6">else</span> <span style="color:#6272a4">// maxValue &lt; 2
+</span><span style="color:#6272a4"></span>        {
+            <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span>[<span style="color:#bd93f9">0</span>]; <span style="color:#6272a4">// 若輸入不合理的值，則回傳空陣列
+</span><span style="color:#6272a4"></span>        }
+    }
+}
+</code></pre></div><p>Listing 5-2 GeneratePrimesTest.cs</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">using</span> NUnit.Framework;
+<span style="color:#50fa7b">
+</span><span style="color:#50fa7b">[TextFixture]</span>
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">GeneratePrimesTest</span>
+{
+<span style="color:#50fa7b">    [Test]</span>
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> TestPrimes()
+    {
+        <span style="color:#8be9fd">int</span> [] nullArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">0</span>);
+        Assert.AreEqual(nullArray.Length, <span style="color:#bd93f9">0</span>);
+
+        <span style="color:#8be9fd">int</span> [] minArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">2</span>);
+        Assert.AreEqual(minArray.Length, <span style="color:#bd93f9">1</span>);
+        Assert.AreEqual(minArray[<span style="color:#bd93f9">0</span>], <span style="color:#bd93f9">2</span>);
+
+        <span style="color:#8be9fd">int</span> [] threeArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">3</span>);
+        Assert.AreEqual(threeArray.Length, <span style="color:#bd93f9">2</span>);
+        Assert.AreEqual(threeArray[<span style="color:#bd93f9">0</span>], <span style="color:#bd93f9">2</span>);
+        Assert.AreEqual(threeArray[<span style="color:#bd93f9">1</span>], <span style="color:#bd93f9">3</span>);
+        
+        <span style="color:#8be9fd">int</span> [] centArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">100</span>);
+        Assert.AreEqual(threeArray.Length, <span style="color:#bd93f9">25</span>);
+        Assert.AreEqual(threeArray[<span style="color:#bd93f9">24</span>], <span style="color:#bd93f9">97</span>);
+    }
+}
+</code></pre></div><h2 id="3-重構">3. 重構</h2>
+<ul>
+<li>主函式要被分為3個獨立的函式
+<ol>
+<li>第一個函式會對所有的變數進行初始化動作，並做好過濾所需的準備工作</li>
+<li>第二個函式執行過濾工作</li>
+<li>第三個函式則是把過濾結果存放到一個整數陣列中</li>
+</ol>
+</li>
+<li>對這三個函式的提取迫使我把該函式的一些區域變數提升為類別的靜態欄位(static field)，這更清楚地顯示出哪些是區域變數，哪些變數的影響更廣泛</li>
+</ul>
+<p>Listing 5-3 PrimeGenerator.cs, version 2</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#6272a4">/// &lt;remark&gt; 
+</span><span style="color:#6272a4">/// 這個類別產生使用者指定之最大值範圍內的質數。 
+</span><span style="color:#6272a4">/// 使用的演算法是Eratosthenes 篩選法。
+</span><span style="color:#6272a4">/// 給定一個整數陣列,其內容由2開始遞增:
+</span><span style="color:#6272a4">/// 找第一個尚未被劃掉的整數,去劃掉它的所有倍數。
+</span><span style="color:#6272a4">/// 如此反覆執行，直到陣列中再也找不到最多的倍數。
+</span><span style="color:#6272a4">///&lt;/remark&gt;
+</span><span style="color:#6272a4"></span>
+<span style="color:#ff79c6">using</span> System;
+
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">PrimeGenerator</span>
+{
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> s;
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">bool</span>[] f;
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">bool</span>[] primes;
+    
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span>[] GeneratePrimeNumbers(<span style="color:#8be9fd">int</span> maxValue)
+    {       
+        <span style="color:#ff79c6">if</span> (maxValue &lt; <span style="color:#bd93f9">2</span>)
+        {
+            <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span>[<span style="color:#bd93f9">0</span>];
+        }
+        <span style="color:#ff79c6">else</span>
+        {
+            InitializeSieve(maxValue);
+            Sieve();
+            LoadParimes();
+            <span style="color:#ff79c6">return</span> primes;
+        }
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> LoadPrimes()
+    {
+        <span style="color:#8be9fd">int</span> i;
+        <span style="color:#8be9fd">int</span> j;
+
+        <span style="color:#6272a4">// 有多少個質數?
+</span><span style="color:#6272a4"></span>        <span style="color:#8be9fd">int</span> count = <span style="color:#bd93f9">0</span>;
+        <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">0</span>; i &lt; s; i ++)
+        {
+            <span style="color:#ff79c6">if</span> (f[i])
+                count++; <span style="color:#6272a4">// 累加
+</span><span style="color:#6272a4"></span>        }
+
+        primes = <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span>[count];
+
+        <span style="color:#6272a4">// 把質數轉移到結果列中
+</span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">0</span>, j = <span style="color:#bd93f9">0</span>; i &lt; s; i++)
+        {
+            <span style="color:#ff79c6">if</span> (f[i]) <span style="color:#6272a4">// 若為質數
+</span><span style="color:#6272a4"></span>                primes[j++] = i;
+        }
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> Sieve()
+    {
+        <span style="color:#8be9fd">int</span> i;
+        <span style="color:#8be9fd">int</span> j;
+        <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">2</span>; i &lt; Math.Sqrt(s) + <span style="color:#bd93f9">1</span>; i++)
+        {
+            <span style="color:#ff79c6">if</span> (f[i]) <span style="color:#6272a4">// 如果i未被劃掉，就劃掉其倍數
+</span><span style="color:#6272a4"></span>            {
+                <span style="color:#ff79c6">for</span> (j = <span style="color:#bd93f9">2</span> * i; j &lt; s; j +=i)
+                f[j] = <span style="color:#ff79c6">false</span>; <span style="color:#6272a4">// 倍數不是質數
+</span><span style="color:#6272a4"></span>            }
+        }
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> InitializeSieve(<span style="color:#8be9fd">int</span> maxValue)
+    {
+        <span style="color:#6272a4">// 宣告
+</span><span style="color:#6272a4"></span>        s = maxValue + <span style="color:#bd93f9">1</span>; <span style="color:#6272a4">//陣列大小
+</span><span style="color:#6272a4"></span>        f = <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">bool</span>[s];
+        <span style="color:#8be9fd">int</span> i;
+
+        <span style="color:#6272a4">// 將陣列元素初始為true
+</span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">for</span> (i = <span style="color:#bd93f9">0</span>; i &lt; s; i++)
+            f[i] = <span style="color:#ff79c6">true</span>;
+        
+        <span style="color:#6272a4">// 去掉已知的非質數
+</span><span style="color:#6272a4"></span>        f[<span style="color:#bd93f9">0</span>] = f[<span style="color:#bd93f9">1</span>] = <span style="color:#ff79c6">false</span>;
+    }
+}
+</code></pre></div><p>Listing 5-7 GeneratePrimes.cs (最終版)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#6272a4">/// &lt;remark&gt; 
+</span><span style="color:#6272a4">/// 這個類別產生使用者指定之最大值範圍內的質數。 
+</span><span style="color:#6272a4">/// 使用的演算法是Eratosthenes 篩選法。
+</span><span style="color:#6272a4">/// 給定一個整數陣列,其內容由2開始遞增:
+</span><span style="color:#6272a4">/// 找第一個尚未被劃掉的整數,去劃掉它的所有倍數。
+</span><span style="color:#6272a4">/// 如此反覆執行，直到陣列中再也找不到最多的倍數。
+</span><span style="color:#6272a4">///&lt;/remark&gt;
+</span><span style="color:#6272a4"></span>
+<span style="color:#ff79c6">using</span> System;
+
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">GeneratePrimes</span>
+{
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">bool</span>[] crossedOut;
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span>[] result;
+
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span>[] GeneratePrimeNumbers(<span style="color:#8be9fd">int</span> maxValue)
+    {
+        <span style="color:#ff79c6">if</span> (maxValue &lt; <span style="color:#bd93f9">2</span>)
+        {
+            <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span>[<span style="color:#bd93f9">0</span>];
+        }
+        <span style="color:#ff79c6">else</span>
+        {
+            UncrossIntegersUpTo(maxValue);
+            CrossOutMultiples();
+            PutUncrossedIntegersIntoResult();
+            <span style="color:#ff79c6">return</span> result;
+        }
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> UncrossIntegersUpTo(<span style="color:#8be9fd">int</span> maxValue)
+    {
+        crossedOut = <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">bool</span>[maxValue + <span style="color:#bd93f9">1</span>];
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">2</span>; i &lt; crossedOut.Length; i++)
+            crossedOut[i] = <span style="color:#ff79c6">false</span>;
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> PutUncrossedIntegersIntoResult()
+    {
+        result = <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span>[NumberOfUncrossedIntegers()];
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> j = <span style="color:#bd93f9">0</span>, i = <span style="color:#bd93f9">2</span>; i &lt; crossedOut.Length; i++)
+        {
+            <span style="color:#ff79c6">if</span> (NotCrossed(i))
+                result[j++] = i;
+        }
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> NumberOfUncrossedIntegers()
+    {
+        <span style="color:#8be9fd">int</span> count = <span style="color:#bd93f9">0</span>;
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">2</span>; i &lt; crossedOut.Length; i++)
+        {
+            <span style="color:#ff79c6">if</span> (NotCrossed(i))
+                count++; <span style="color:#6272a4">// 累加count
+</span><span style="color:#6272a4"></span>        }
+        <span style="color:#ff79c6">return</span> count;
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> CrossOutMultiples()
+    {
+        <span style="color:#8be9fd">int</span> limit = DetermineIterationLimit();
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">2</span>; i &lt;= limit; i++)
+        {
+            <span style="color:#ff79c6">if</span> (NotCrossed(i))
+                CrossOutputMultiplesOf(i);
+        }
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">int</span> DetermineIterationLimit()
+    {
+        <span style="color:#6272a4">// 陣列中的每個倍數都有一個小於或等於陣列大小平方根的質因數
+</span><span style="color:#6272a4"></span>        <span style="color:#6272a4">// 因此我們不用劃掉那些比這個平方根還大的倍數
+</span><span style="color:#6272a4"></span>        <span style="color:#8be9fd">double</span> iterationLimit = Math.Sqrt(crossedOut.Length);
+        <span style="color:#ff79c6">return</span> (<span style="color:#8be9fd">int</span>)iterationLimit;
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#ff79c6">void</span> CrossOutputMultiplesOf(<span style="color:#8be9fd">int</span> i)
+    {
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> multiple = <span style="color:#bd93f9">2</span> * i; multiple &lt; crossedOut.Length; multiple += i)
+            crossedOut[multiple] = <span style="color:#ff79c6">true</span>;
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">static</span> <span style="color:#8be9fd">bool</span> NotCrossed(<span style="color:#8be9fd">int</span> i)
+    {
+        <span style="color:#ff79c6">return</span> crossedOut[i] == <span style="color:#ff79c6">false</span>;
+    }
+}
+</code></pre></div><p>Listing 5-8 GeneratePrimesTest.cs</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">using</span> NUnit.Framework;
+<span style="color:#50fa7b">
+</span><span style="color:#50fa7b">[TextFixture]</span>
+<span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">GeneratePrimesTest</span>
+{
+<span style="color:#50fa7b">    [Test]</span>
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> TestPrimes()
+    {
+        <span style="color:#8be9fd">int</span> [] nullArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">0</span>);
+        Assert.AreEqual(nullArray.Length, <span style="color:#bd93f9">0</span>);
+
+        <span style="color:#8be9fd">int</span> [] minArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">2</span>);
+        Assert.AreEqual(minArray.Length, <span style="color:#bd93f9">1</span>);
+        Assert.AreEqual(minArray[<span style="color:#bd93f9">0</span>], <span style="color:#bd93f9">2</span>);
+
+        <span style="color:#8be9fd">int</span> [] threeArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">3</span>);
+        Assert.AreEqual(threeArray.Length, <span style="color:#bd93f9">2</span>);
+        Assert.AreEqual(threeArray[<span style="color:#bd93f9">0</span>], <span style="color:#bd93f9">2</span>);
+        Assert.AreEqual(threeArray[<span style="color:#bd93f9">1</span>], <span style="color:#bd93f9">3</span>);
+        
+        <span style="color:#8be9fd">int</span> [] centArray = GeneratePrimes.GeneratePrimeNumbers(<span style="color:#bd93f9">100</span>);
+        Assert.AreEqual(threeArray.Length, <span style="color:#bd93f9">25</span>);
+        Assert.AreEqual(threeArray[<span style="color:#bd93f9">24</span>], <span style="color:#bd93f9">97</span>);
+    }
+<span style="color:#50fa7b">
+</span><span style="color:#50fa7b">    [Test]</span>
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> TestExhaustive()
+    {
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">2</span>; i &lt; <span style="color:#bd93f9">500</span>; i++)
+            VerifyPrimeList(GeneratePrimes.GeneratePrimeNumbers(i));
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> VerifyPrimeList(<span style="color:#8be9fd">int</span>[] list)
+    {
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i = <span style="color:#bd93f9">0</span>; i &lt; list.Length; i++)
+            VerifyPrime(list[i]);
+    }
+
+    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> VerifyPrime(<span style="color:#8be9fd">int</span> n)
+    {
+        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> factor = <span style="color:#bd93f9">2</span>; factor &lt; n; factor++)
+            Assert.IsTrue(n%factor != <span style="color:#bd93f9">0</span>);
+    }
+}
+</code></pre></div><h2 id="4-總結">4. 總結</h2>
+<ul>
+<li>大多數的情況下，提取方法所增加的可讀性，值得花費一些微小的額外開銷。我的建議是，假設這種損失是可以忽略的，那就等到時候再去證明這個假設是錯誤的。</li>
+<li>經常對你所撰寫的和維護的每一個模組進行這種重構。</li>
+<li>重構的目的是為了每天、每小時、每分鐘都清理你的程式碼。我們不想讓髒亂累積，不想鑿去並清洗隨時間累積下來乾硬的程式。</li>
+<li>我們想透過微小的努力，就能對我們的系統進行擴展和修改，最重要的就是保持程式碼的整潔。(the cleanliness of the code)</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch4/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (4)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch6/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (6)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

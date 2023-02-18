@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (15)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (15)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (15)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (15)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch15/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (15)</h1>
+                    <h2 class="subheading">狀態圖 (State Diagram)</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Wednesday, December 28, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#狀態圖-state-diagram">狀態圖 (State Diagram)</a>
+      <ul>
+        <li><a href="#1-基礎知識">1. 基礎知識</a></li>
+        <li><a href="#2-使用fsm圖示-finite-state-machine">2. 使用FSM圖示 (finite state machine)</a></li>
+        <li><a href="#3-總結">3. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h1 id="狀態圖-state-diagram">狀態圖 (State Diagram)</h1>
+<h2 id="1-基礎知識">1. 基礎知識</h2>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_1.png" alt="">
+
+</p>
+<ul>
+<li>展示一個簡單的狀態遷移圖(STD, state transition diagram)，該圖描繪了控制使用者登入到系統的FSM。</li>
+<li>圓角矩形代表狀態，上層為狀態名稱，下層為特定動作</li>
+<li>狀態之間包含箭頭的現稱為遷移(transition)，每個遷移都標記觸發該遷移的事件名稱</li>
+<li>實心圓為初始偽狀態(initial pseudostate)</li>
+<li>在Sending Password Failed狀態外圍畫一個稱為超狀態(superstate)</li>
+</ul>
+<h3 id="特定事件">特定事件</h3>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_2.png" alt="">
+
+
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_3.png" alt="">
+
+</p>
+<ul>
+<li>開始和結束都在相同狀態上的迴圈遷移箭頭</li>
+<li>自反遷移(reflexive transition)不僅會觸發myAction，還會觸發exit和entry動作</li>
+</ul>
+<h3 id="超狀態">超狀態</h3>
+<ul>
+<li>當許多的狀態以相同的方式回應某些相同事件時，使用超狀態非常方便。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_4.png" alt="">
+
+</li>
+<li>兩個圖示是等價的
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_5.png" alt="">
+
+</li>
+<li>S3的pause遷移改寫了Cancelable超狀態的預設pause遷移。</li>
+<li>超狀態更像是基底類別。子狀態能夠用和衍生類別改寫基底類別的方法相同的方式改寫其超狀態的遷移</li>
+<li>超狀態漢子狀態之間的關係，實際上和繼承關係是不等價的
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_6.png" alt="">
+
+</li>
+<li>超狀態可以具有和一般狀態相同的entry、exit及特定事件</li>
+<li>當Some state遷移到Sub狀態時，FSM首先觸發enterSuper，再來觸發enterSub</li>
+<li>當從Sub2狀態離開時，FSM首先觸發exitSub2，再來觸發exitSuper</li>
+<li>Sub到Sub2的e2遷移僅會觸發exitSub和enterSub2，其未離開超狀態</li>
+</ul>
+<h3 id="初始偽狀態和結束偽狀態">初始偽狀態和結束偽狀態</h3>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_7.png" alt="">
+
+</p>
+<ul>
+<li>展示了兩個UML常用的偽狀態</li>
+<li>FSM是開始於初始偽狀態遷移出來的程序，從初始偽狀態出來的遷移不能帶有事件，因為這個事件就是狀態機的建立。不過這個遷移可以帶有動作，這個動作將作為FSM建立完成後觸發的第一個動作</li>
+<li>FSM前移到結束偽狀態(final pseudostate)而消亡，這狀態實際是永遠無法到達的。到結束偽狀態的遷移上頭所帶的任何動作都將成為該FSM觸發的最後動作。</li>
+</ul>
+<h2 id="2-使用fsm圖示-finite-state-machine">2. 使用FSM圖示 (finite state machine)</h2>
+<ul>
+<li>此圖是用在理解那些&quot;行為已知的子系統&quot;的狀態機非常有用</li>
+<li>不過大部分適合以FSM表達的系統，其行為是無法預知的。此圖是不適合用於那些頻繁變化的系統。
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter15_FSM/15_8.png" alt="">
+
+</li>
+<li>可以將STD表示成狀態遷移表(STT, state transition Table)表15-1，這表格很容易就能轉換成一個文字檔</li>
+<li>以這種方式建立和維護FSM比維護圖示容易許多</li>
+<li>SMC (state machine compiler)可讀進STT並產生出實作該邏輯的C++程式(參考www.objectmentor.com)</li>
+</ul>
+<h2 id="3-總結">3. 總結</h2>
+<ul>
+<li>FSM在組織軟體時是一種強而有力的學說，UML在FSM的視覺化提供豐富的符號。</li>
+<li>不過，在開發和維護FSM方面，採用文字語言要比圖形更容易一些。</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch16/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (16)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/csharp_agile_ch13/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (13)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
