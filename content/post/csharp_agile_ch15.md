@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (15)"
 subtitle:    "狀態圖 (State Diagram)"
 description: ""
-date:        2022-12-28
+date:        2022-12-30
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"

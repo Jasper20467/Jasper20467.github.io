@@ -2,7 +2,7 @@
 title:       "Agile Principles Patterns Practices in C# (18)"
 subtitle:    "循序圖 (UML - Sequence Diagram)"
 description: ""
-date:        2022-02-02
+date:        2023-02-20
 author: Jasper & Ken
 published: true
 image: "/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png"
