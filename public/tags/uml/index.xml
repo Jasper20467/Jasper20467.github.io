@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UML on Jasper Blog</title>
+    <link>/tags/uml/</link>
+    <description>Recent content in UML on Jasper Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/uml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Plant UML Introduction</title>
+      <link>/post/plantuml_1/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/plantuml_1/</guid>
+      <description>Plant UML Plant UML 是一個可以透過直觀的文字描述自動產生UML圖的工具，可省下許多做圖的時間，只要專注在文字邏輯的闡述即可。 編輯的文檔格視為.puml，</description>
+    </item>
+    
+  </channel>
+</rss>

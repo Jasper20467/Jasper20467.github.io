@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Dokcer Fit AWS EC2" />
+    <meta property="og:title" content="Dokcer Fit AWS EC2" />
+    <meta property="twitter:title" content="Dokcer Fit AWS EC2" />
+    
+
+    
+    <meta name="description" content="Build the Flask Web API on AWS EC2 via docker image">
+    <meta property="og:description" content="Build the Flask Web API on AWS EC2 via docker image" />
+    <meta property="twitter:description" content="Build the Flask Web API on AWS EC2 via docker image" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Dokcer Fit AWS EC2-Jasper blog</title>
+
+    <link rel="canonical" href="/post/dockerfitaws_ec2/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/docker/docker-home.jpeg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/docker" title="Docker">
+                            Docker
+                        </a>
+                        
+                        <a class="tag" href="/tags/aws" title="AWS">
+                            AWS
+                        </a>
+                        
+                    </div>
+                    <h1>Dokcer Fit AWS EC2</h1>
+                    <h2 class="subheading">Deploy the Web API on AWS EC2</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper
+                         
+                        on 
+                        Thursday, February 25, 2021
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#建立python-flask-api">建立Python Flask API</a></li>
+        <li><a href="#建立docker-image">建立Docker Image</a></li>
+        <li><a href="#建立aws-ec2">建立AWS EC2</a></li>
+        <li><a href="#docker-container-run-on-aws-ec2">Docker container run on AWS EC2</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h2 id="建立python-flask-api">建立Python Flask API</h2>
+<p>Flask 是一個輕量化的Python 後端API套件，請參考一下Demo code 建立Python API。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">from</span> flask <span style="color:#ff79c6">import</span> Flask,render_template
+
+app <span style="color:#ff79c6">=</span> Flask(<span style="color:#f1fa8c">&#39;__name__&#39;</span>)
+
+
+@app<span style="color:#ff79c6">.</span>route(<span style="color:#f1fa8c">&#39;/&#39;</span>)
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">home</span>():
+    <span style="color:#ff79c6">return</span> render_template(<span style="color:#f1fa8c">&#39;home.html&#39;</span>)
+
+@app<span style="color:#ff79c6">.</span>route(<span style="color:#f1fa8c">&#39;/endpoint&#39;</span>)
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">endpoint</span>():
+    <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;This is an end point. You can call send or receive requests by calling this end point.&#34;</span>
+
+@app<span style="color:#ff79c6">.</span>route(<span style="color:#f1fa8c">&#39;/linker&#39;</span>)
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">linker</span>():
+    <span style="color:#ff79c6">return</span> render_template(<span style="color:#f1fa8c">&#39;link.html&#39;</span>)
+
+<span style="color:#ff79c6">if</span> __name__ <span style="color:#ff79c6">==</span> <span style="color:#f1fa8c">&#34;__main__&#34;</span>:
+    app<span style="color:#ff79c6">.</span>run(host<span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;0.0.0.0&#34;</span>,port<span style="color:#ff79c6">=</span><span style="color:#bd93f9">5000</span>)
+    <span style="color:#6272a4">#app.run(debug=True) #can alter host and port number here. Right now the default host is localhost and port is 5000</span>
+</code></pre></div><p>確認本機端可正常連線成功
+
+  <img src="/img/Tech/docker/flask_build.png" alt="">
+
+</p>
+<p>建立Python 套件 安裝清單 （requirements.txt)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Click==8.0.4
+Flask==2.0.3
+itsdangerous==2.0.1
+Jinja2==3.0.3
+Werkzeug==2.0.3
+</code></pre></div><h2 id="建立docker-image">建立Docker Image</h2>
+<p>打包Python Flask API 為Docker Image，請參考如下Dockerfile</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile">// 基本映像檔為Python 3.9
+<span style="color:#ff79c6">FROM</span><span style="color:#f1fa8c"> python:3.9-buster</span>
+// 工作目錄
+<span style="color:#ff79c6">WORKDIR</span><span style="color:#f1fa8c"> /app</span>
+// 將Python Flask 檔案覆至於/app目錄下
+<span style="color:#ff79c6">COPY</span> . /app
+// 升級環境套件
+<span style="color:#ff79c6">RUN</span> apt-get update
+// 透過requirements.txt安裝需要的Python 套件
+<span style="color:#ff79c6">RUN</span> pip install -r requirements.txt
+// 執行main.py
+<span style="color:#ff79c6">CMD</span> python3 main.py
+</code></pre></div><p>在共同目錄下，執行Docker Build 指令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker build -t flask_test .
+</code></pre></div><p>
+  <img src="/img/Tech/docker/docker_build.png" alt="">
+
+</p>
+<p>確認image 打包完成
+
+  <img src="/img/Tech/docker/docker_image_list.png" alt="">
+
+</p>
+<p>在本機端透過flask_test image建立Docker Container</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker run -p 5000:5000 -d flask_test
+</code></pre></div><p>確認服務執行成功
+
+  <img src="/img/Tech/docker/flask_server.png" alt="">
+
+</p>
+<p>將Docker Image 上傳到個人的DockerHub上，透過VS Code執行
+
+  <img src="/img/Tech/docker/DockerHub.png" alt="">
+
+</p>
+<h2 id="建立aws-ec2">建立AWS EC2</h2>
+<p>在AWS EC2上建立Linux物件實體，透過AWS Ec2 cloudshell 或是SSH 連線進Ec2內部，在AWS上安裝Docker Engine  <a href="https://docs.aws.amazon.com/zh_tw/AmazonECS/latest/developerguide/create-container-image.html">(link)</a></p>
+<h2 id="docker-container-run-on-aws-ec2">Docker container run on AWS EC2</h2>
+<p>從Docker Hub拉下image到AWS EC2 內。
+
+  <img src="/img/Tech/docker/ec2_dockerHub.png" alt="">
+
+</p>
+<p>需要由外部port: 80 轉到內部port: 5000， 因為EC2 的SG是開在http:80上。
+
+  <img src="/img/Tech/docker/ec2_sg.png" alt="">
+
+</p>
+<p>在EC2上建立Docker Container，指令如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker run -p 80:5000 -d bb9871bda67e
+</code></pre></div><p>
+  <img src="/img/Tech/docker/docker_run_ec2.png" alt="">
+
+</p>
+<p>確認Python Flask 以成功佈署於EC2，並可透過Piblic IPV4 address 連線，如下：
+
+  <img src="/img/Tech/docker/ec2_ipv4.png" alt="">
+
+</p>
+<p>開啟網頁確認可透過外部正常連線
+
+  <img src="/img/Tech/docker/success.png" alt="">
+
+</p>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/docker-1/" data-toggle="tooltip" data-placement="top" title="Dokcer Learning - 1">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/hello-world/" data-toggle="tooltip" data-placement="top" title="Welcome to Jasper`s Blog">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2023
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

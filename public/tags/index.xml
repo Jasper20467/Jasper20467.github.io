@@ -6,22 +6,49 @@
     <description>Recent content in Tags on Jasper Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSharp</title>
+      <link>/tags/csharp/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/csharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Moq</title>
+      <link>/tags/moq/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/moq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UML</title>
+      <link>/tags/uml/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/uml/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Book</title>
       <link>/tags/book/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>/tags/book/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>CSharp</title>
-      <link>/tags/csharp/</link>
-      <pubDate>Thu, 29 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Camping</title>
+      <link>/tags/camping/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/csharp/</guid>
+      <guid>/tags/camping/</guid>
       <description></description>
     </item>
     
@@ -35,11 +62,11 @@
     </item>
     
     <item>
-      <title>Camping</title>
-      <link>/tags/camping/</link>
-      <pubDate>Sat, 10 Apr 2021 00:00:00 +0000</pubDate>
+      <title>AWS</title>
+      <link>/tags/aws/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>/tags/camping/</guid>
+      <guid>/tags/aws/</guid>
       <description></description>
     </item>
     

@@ -6,7 +6,61 @@
     <description>Recent content on Jasper Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# Unit Testing</title>
+      <link>/post/unitetesting_moq/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/unitetesting_moq/</guid>
+      <description>Moq 是一個 C# 的單元測試框架，它可以讓你輕鬆地創建和管理模擬對象。本教學將介紹如何使用 Moq 來進行單元測試。 安裝 Moq 在開始之前，你需要先安裝 Moq。你</description>
+    </item>
+    
+    <item>
+      <title>Plant UML Introduction</title>
+      <link>/post/plantuml_1/</link>
+      <pubDate>Thu, 02 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/plantuml_1/</guid>
+      <description>Plant UML Plant UML 是一個可以透過直觀的文字描述自動產生UML圖的工具，可省下許多做圖的時間，只要專注在文字邏輯的闡述即可。 編輯的文檔格視為.puml，</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (18)</title>
+      <link>/post/csharp_agile_ch18/</link>
+      <pubDate>Mon, 20 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch18/</guid>
+      <description>物件圖 (UML - Object Diagram) ====== UN L提供了大量具有吸引力的東西但是使用他們時要保持高度的節制 只有當你需要立即向某人解釋一組物件的協作方式，或者當自己想要把這</description>
+    </item>
+    
+    <item>
+      <title>南投國姓-森之境露營區</title>
+      <link>/post/camping03_20230126/</link>
+      <pubDate>Thu, 26 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/camping03_20230126/</guid>
+      <description>新夥伴加入 睽違了一年多，TCM終於在出發了，說好的一季一露，都已經要變成一年一露了，傻眼.. 隨著年紀的增長，朋友們相聚的機會也少了很多，希望</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (16)</title>
+      <link>/post/csharp_agile_ch16/</link>
+      <pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch16/</guid>
+      <description>物件圖 (UML - Object Diagram) ====== UML物件圖展示了在一個特定時刻取得的物件、關係和屬性值 1. 即時快照 當你需要展示系統在某個特定時刻或某個特定狀態下的內部結構時</description>
+    </item>
+    
+    <item>
+      <title>Agile Principles Patterns Practices in C# (15)</title>
+      <link>/post/csharp_agile_ch15/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/csharp_agile_ch15/</guid>
+      <description>狀態圖 (State Diagram) 1. 基礎知識 展示一個簡單的狀態遷移圖(STD, state transition diagram)，該圖描繪了控制使用者登入到系統的FSM。 圓角矩形代表狀態，上層為</description>
+    </item>
+    
     <item>
       <title>Agile Principles Patterns Practices in C# (14)</title>
       <link>/post/csharp_agile_ch14/</link>
@@ -23,24 +77,6 @@
       
       <guid>/post/csharp_agile_ch13/</guid>
       <description>UML概述 統一塑模語言 Unified Modeling Language 是用來繪製軟體概念圖的一種圖形符號 分為三個層次的模型 概念層級 (conceptual) 一種速記方法，和原始碼沒有強烈關係，繪製存在人類問</description>
-    </item>
-    
-    <item>
-      <title>Agile Principles Patterns Practices in C# (15)</title>
-      <link>/post/csharp_agile_ch15/</link>
-      <pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch15/</guid>
-      <description>狀態圖 (State Diagram) 1. 基礎知識 展示一個簡單的狀態遷移圖(STD, state transition diagram)，該圖描繪了控制使用者登入到系統的FSM。 圓角矩形代表狀態，上層為</description>
-    </item>
-    
-    <item>
-      <title>Agile Principles Patterns Practices in C# (16)</title>
-      <link>/post/csharp_agile_ch16/</link>
-      <pubDate>Wed, 28 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/csharp_agile_ch16/</guid>
-      <description>物件圖 (UML - Object Diagram) ====== UML物件圖展示了在一個特定時刻取得的物件、關係和屬性值 1. 即時快照 當你需要展示系統在某個特定時刻或某個特定狀態下的內部結構時</description>
     </item>
     
     <item>
@@ -161,7 +197,7 @@
     </item>
     
     <item>
-      <title>新竹五峰-小米露營區 (#2)</title>
+      <title>新竹五峰-小米露營區</title>
       <link>/post/camping02-tcm/</link>
       <pubDate>Sat, 10 Apr 2021 00:00:00 +0000</pubDate>
       
@@ -177,6 +213,15 @@
       <guid>/post/hello-world/</guid>
       <description>Hello World! This is my first POST.
 Hello Life! Share life and images.</description>
+    </item>
+    
+    <item>
+      <title>Dokcer Fit AWS EC2</title>
+      <link>/post/dockerfitaws_ec2/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dockerfitaws_ec2/</guid>
+      <description>建立Python Flask API Flask 是一個輕量化的Python 後端API套件，請參考一下Demo code 建立Python API。 from flask import Flask,render_template app = Flask(&amp;#39;__name__&amp;#39;) @app.route(&amp;#39;/&amp;#39;) def home(): return render_template(&amp;#39;home.html&amp;#39;) @app.route(&amp;#39;/endpoint&amp;#39;) def endpoint(): return</description>
     </item>
     
     <item>
@@ -198,7 +243,7 @@ Hello Life! Share life and images.</description>
     </item>
     
     <item>
-      <title>新竹五峰- 蘇山藏美 (#1)</title>
+      <title>新竹五峰-蘇山藏美</title>
       <link>/post/camping01/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       

@@ -2,37 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/post/unitetesting_moq/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/csharp/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/moq/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/tech/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/plantuml_1/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/uml/</loc>
+    <lastmod>2023-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/csharp_agile_ch18/</loc>
+    <lastmod>2023-02-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/book/</loc>
+    <lastmod>2023-02-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/camping/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/life/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/camping03_20230126/</loc>
+    <lastmod>2023-01-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/csharp_agile_ch16/</loc>
+    <lastmod>2022-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/csharp_agile_ch15/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/post/csharp_agile_ch14/</loc>
     <lastmod>2022-12-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/book/</loc>
-    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/csharp/</loc>
-    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/post/</loc>
-    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/tech/</loc>
-    <lastmod>2022-12-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/post/csharp_agile_ch13/</loc>
-    <lastmod>2022-12-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/post/csharp_agile_ch15/</loc>
-    <lastmod>2022-12-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/post/csharp_agile_ch16/</loc>
     <lastmod>2022-12-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/csharp_agile_ch12/</loc>
@@ -77,19 +101,19 @@
     <loc>/post/hugo-basic/</loc>
     <lastmod>2021-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/camping/</loc>
-    <lastmod>2021-04-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/life/</loc>
-    <lastmod>2021-04-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/post/camping02-tcm/</loc>
     <lastmod>2021-04-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/hello-world/</loc>
     <lastmod>2021-04-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/aws/</loc>
+    <lastmod>2021-02-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/docker/</loc>
+    <lastmod>2021-02-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/dockerfitaws_ec2/</loc>
     <lastmod>2021-02-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/docker-1/</loc>
