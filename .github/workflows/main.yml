@@ -8,15 +8,19 @@ jobs:
       with:
         submodules: true  
         fetch-depth: 0
-        
+    
+    # 引用外部的repo，並設定hugo版本環境
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
         hugo-version: '0.91.0'   
-    
+
+    # 執行 hugo -D 部屬以更新public
     - name: Build
       run: hugo -D
-      
+
+      # 建立FireBase 發佈環境
+      # 搭配deploy token 執行發佈
     - name: Firebase Deploy
       run: |
         sudo npm install -g firebase-tools
