@@ -13,10 +13,10 @@ jobs:
       uses: peaceiris/actions-hugo@v2
       with:
         hugo-version: '0.91.0'   
+    
     - name: Build
-      run: |
-        yarn
-        yarn build
+      run: hugo -D
+      
     - name: Firebase Deploy
       run: |
         sudo npm install -g firebase-tools
