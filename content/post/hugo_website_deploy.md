@@ -21,3 +21,5 @@ categories:  [Tech]
 ## 3. DNS設定 
 
 ## 4. GitHUB CI 自動發佈
+
+## 5. HUGO Fit. YML 應用
