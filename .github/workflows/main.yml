@@ -12,9 +12,12 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.91.0'
-        
-    - uses: ryank90/action-hugo-firebase-deploy@master
-      with:
-        firebase-token: ${{ secrets.firebase_token }}
-        hugo-params: -D
+        hugo-version: '0.91.0'   
+    - name: Build
+      run: |
+        yarn
+        yarn build
+    - name: Firebase Deploy
+      run: |
+        sudo npm install -g firebase-tools
+        firebase deploy --token ${{ secrets.firebase_token  }}
