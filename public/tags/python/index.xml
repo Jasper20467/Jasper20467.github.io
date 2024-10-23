@@ -6,7 +6,16 @@
     <description>Recent content in Python on Jasper Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leet Code DFS</title>
+      <link>/post/leetcode-1/</link>
+      <pubDate>Wed, 23 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/leetcode-1/</guid>
+      <description>Problem Q39_Combination_Sum Reference: 演算法 DFS Python實作</description>
+    </item>
+    
     <item>
       <title>Django - 5 Migrations</title>
       <link>/post/django-5/</link>
@@ -50,15 +59,6 @@
       
       <guid>/post/django-1/</guid>
       <description>安裝Python後，再安裝Django套件 安裝django套件 pip install django==2.1.3 環境變數設定 安裝完成後透過以下cmd確認功能是否正常 &amp;gt;&amp;gt;&amp;gt; import django &amp;gt;&amp;gt;&amp;gt; print(django.get_version()) 2.1 使用Dj</description>
-    </item>
-    
-    <item>
-      <title>Python Web Dash (2)</title>
-      <link>/post/python-dash-2/</link>
-      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/python-dash-2/</guid>
-      <description></description>
     </item>
     
     <item>
