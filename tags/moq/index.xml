@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Moq on Jasper Blog</title>
+    <link>/tags/moq/</link>
+    <description>Recent content in Moq on Jasper Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/moq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# Unit Testing</title>
+      <link>/post/unitetesting_moq/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/unitetesting_moq/</guid>
+      <description>Moq 是一個 C# 的單元測試框架，它可以讓你輕鬆地創建和管理模擬對象。本教學將介紹如何使用 Moq 來進行單元測試。 安裝 Moq 在開始之前，你需要先安裝 Moq。你</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 25 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Dokcer Fit AWS EC2</title>
+      <link>/post/dockerfitaws_ec2/</link>
+      <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dockerfitaws_ec2/</guid>
+      <description>建立Python Flask API Flask 是一個輕量化的Python 後端API套件，請參考一下Demo code 建立Python API。 from flask import Flask,render_template app = Flask(&amp;#39;__name__&amp;#39;) @app.route(&amp;#39;/&amp;#39;) def home(): return render_template(&amp;#39;home.html&amp;#39;) @app.route(&amp;#39;/endpoint&amp;#39;) def endpoint(): return</description>
+    </item>
+    
+    <item>
       <title>Dokcer Learning - 1</title>
       <link>/post/docker-1/</link>
       <pubDate>Thu, 25 Feb 2021 00:00:00 +0000</pubDate>

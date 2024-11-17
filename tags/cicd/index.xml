@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CICD on Jasper Blog</title>
+    <link>/tags/cicd/</link>
+    <description>Recent content in CICD on Jasper Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/cicd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Website deploy on FireBase via GitHub CI</title>
+      <link>/post/hugo_website_deploy/</link>
+      <pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/hugo_website_deploy/</guid>
+      <description>1. 建立FireBase 專案 2. FireBase 網站發佈 3. DNS設定 4. GitHUB CI 自動發佈 5. HUGO Fit. YML 應用</description>
+    </item>
+    
+  </channel>
+</rss>

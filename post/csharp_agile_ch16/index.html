@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Agile Principles Patterns Practices in C# (16)" />
+    <meta property="og:title" content="Agile Principles Patterns Practices in C# (16)" />
+    <meta property="twitter:title" content="Agile Principles Patterns Practices in C# (16)" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Agile Principles Patterns Practices in C# (16)-Jasper blog</title>
+
+    <link rel="canonical" href="/post/csharp_agile_ch16/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/Csharp_CleanCode_Agile/CleanCode_Home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/csharp" title="CSharp">
+                            CSharp
+                        </a>
+                        
+                        <a class="tag" href="/tags/book" title="Book">
+                            Book
+                        </a>
+                        
+                    </div>
+                    <h1>Agile Principles Patterns Practices in C# (16)</h1>
+                    <h2 class="subheading">物件圖 (UML - Object Diagram)</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper &amp; Ken
+                         
+                        on 
+                        Saturday, December 31, 2022
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-即時快照">1. 即時快照</a></li>
+        <li><a href="#2-主動物件">2. 主動物件</a></li>
+        <li><a href="#2-總結">2. 總結</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <p>物件圖 (UML - Object Diagram)</p>
+<p>======</p>
+<blockquote>
+<p>UML物件圖展示了在一個特定時刻取得的物件、關係和屬性值</p>
+</blockquote>
+<h2 id="1-即時快照">1. 即時快照</h2>
+<ul>
+<li>當你需要展示系統在某個特定時刻或某個特定狀態下的內部結構時，像這樣的物件圖是很有用的</li>
+<li>在大多數情況下是不需要他們的，而當需要他們使他們又是不可或缺的</li>
+<li>你將會很少需要他們，絕不要假設對於系統中的每個場景，甚至對於每個系統你都需要繪製他們
+
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_1.png" alt="">
+
+</li>
+<li>這幅圖顯示出有哪些可用的資料結構，但卻沒有準確地告訴你在任一給定時刻所建立起來的物件和關係。</li>
+<li>例如當需要表示一個廚房和一個餐廳，他們可以透過一個牆洞將之連接起來，由此幅圖就沒辦法明確的顯示此意圖</li>
+</ul>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_2.png" alt="">
+
+</p>
+<ul>
+<li>這幅圖中展示的系統中的物件以及這些物件連結的其他物件</li>
+<li>圖中把Kitchen和LunchRoom顯示為Space的不同實例，並展示了這兩個房間是如何透過一個牆洞連接起來的</li>
+<li>同時圖中也展示了所有其他必須存在的物件和關係</li>
+</ul>
+<h2 id="2-主動物件">2. 主動物件</h2>
+<ul>
+<li>再多執行緒的系統中，物件圖也非常有用</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#ff79c6">using</span> System.Collections;
+<span style="color:#ff79c6">using</span> System.Net;
+<span style="color:#ff79c6">using</span> System.Net.Sockets;
+<span style="color:#ff79c6">using</span> System.Threading;
+<span style="color:#ff79c6">namespace</span> SocketServer
+{
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">interface</span> SocketService
+    {
+        <span style="color:#ff79c6">void</span> Serve(Socket s);
+    }
+
+    <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">SocketServer</span>
+    {    
+        <span style="color:#ff79c6">private</span> TcpListener serverSocket = <span style="color:#ff79c6">null</span>;
+        <span style="color:#ff79c6">private</span> Thread serverThread = <span style="color:#ff79c6">null</span>;
+        <span style="color:#ff79c6">private</span> <span style="color:#8be9fd">bool</span> running = <span style="color:#ff79c6">false</span>;
+        <span style="color:#ff79c6">private</span> SocketService itsService = <span style="color:#ff79c6">null</span>;
+        <span style="color:#ff79c6">private</span> ArrayList threads = <span style="color:#ff79c6">new</span> ArrayList();
+        
+        <span style="color:#ff79c6">public</span> SocketServer(<span style="color:#8be9fd">int</span> port, SocketService service)
+        {
+            itsService = service;
+            IPAddress addr = IPAddress.Parse(<span style="color:#f1fa8c">&#34;127.0.0.1&#34;</span>) ;
+            serverSocket .Start ();
+            serverSocket = <span style="color:#ff79c6">new</span> TepListener(addr, port);
+            serverThread = <span style="color:#ff79c6">new</span> Thread(<span style="color:#ff79c6">new</span> Threadstart (Server));
+            serverThread.Start () ;
+        }       
+        
+        <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Close()
+        {
+            running = <span style="color:#ff79c6">false</span>;
+            serverThread.Interrupt();
+            serverSocket.Stop();
+            serverThread.Join();
+            WaitforServiceThreads();
+        }
+
+        <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> Server()
+        {
+            running = <span style="color:#ff79c6">true</span>;
+            <span style="color:#ff79c6">while</span>(running)
+            {
+                Socket s = serverSocket.AcceptSocket();
+                StartServiceThread(s);
+            }            
+        }
+
+        <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> StartServiceThread(Socket s)
+        {
+            Thread serviceThread = <span style="color:#ff79c6">new</span> Thread(<span style="color:#ff79c6">new</span> ServiceRunner(s, <span style="color:#ff79c6">this</span>).ThreadStart());
+            <span style="color:#ff79c6">lock</span>(threads)
+            {
+                threads.Add(serviceThread);
+            }
+            serviceThread.Start();
+        }
+
+        <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">void</span> WaitForServiceThreads ()
+        {
+            <span style="color:#ff79c6">while</span> (threads.Count &gt; <span style="color:#bd93f9">0</span>)
+            {
+                Thread t;
+                <span style="color:#ff79c6">lock</span> (threads)
+                {
+                    t = (Thread)threads[<span style="color:#bd93f9">0</span>];
+                }
+            }
+            t.Join();
+        }
+
+        <span style="color:#ff79c6">internal</span> <span style="color:#ff79c6">class</span> <span style="color:#50fa7b">ServiceRunner</span>
+        {
+            <span style="color:#ff79c6">private</span> Socket itsSocket;
+            <span style="color:#ff79c6">private</span> SocketServer itsServer;
+            
+            <span style="color:#ff79c6">public</span> ServiceRunner(Socket s,SocketServer server)
+            {
+                itsSocket = s;
+                itsServer = server;
+            }
+
+            <span style="color:#ff79c6">public</span> <span style="color:#ff79c6">void</span> Run()
+            {
+                tsServer.itsService.Serve(itsSocket);
+                <span style="color:#ff79c6">lock</span> (itsServer.threads)
+                {
+                    itsServer.threads.Remove(Thread.CurrentThread);
+
+                }
+                itsSocket.Close();
+            }
+
+            <span style="color:#ff79c6">public</span> ThreadStart ThreadStart()
+            {
+                <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> ThreadStart(Run);
+            }
+        }
+    }
+}
+</code></pre></div><p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_3.png" alt="">
+
+</p>
+<ul>
+<li>由此類別圖中很難看出這段程式碼的意圖。</li>
+<li>圖中展示了所有的類別和他們之間的關係，但是卻沒有以某種方式傳達更關鍵的場景</li>
+</ul>
+<p>
+  <img src="/img/Tech/Csharp_CleanCode_Agile/Chapter16_ObjectDiagram/16_4.png" alt="">
+
+</p>
+<ul>
+<li>請注意圍繞在Thread實例的粗體邊框</li>
+<li>具有粗體邊框的物件代表主動物件，主動物件管理著一個控制執行緒</li>
+<li>他們具有用來控制執行緒的方法，例如：Start / Abort / Sleep &hellip; 等等</li>
+<li>在這幅圖中所有的主動物件都是Thread的實例</li>
+<li>物件圖的表達力比類別圖強一些，因為這個特定應用的結構是在運行時建構起來的</li>
+<li><strong>因此在這種情況下結構表達的大多是物件而不是類別</strong></li>
+</ul>
+<h2 id="2-總結">2. 總結</h2>
+<ul>
+<li>物件圖提供了系統在某個特定時刻的狀態快照</li>
+<li>當系統的結構是動態建構起來而不是尤其靜態的類別結構決定時，這是一種描述系統的有用方法</li>
+<li>在大多數情況下，他們都可以從相對應的類別途中直接推導出來，因此物件圖實際並沒有多大的作用</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/csharp_agile_ch15/" data-toggle="tooltip" data-placement="top" title="Agile Principles Patterns Practices in C# (15)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/camping03_20230126/" data-toggle="tooltip" data-placement="top" title="南投國姓-森之境露營區">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/leetcode" title="leetcode">
+                            leetcode
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2024
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
