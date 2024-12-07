@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="Leet Code" />
-    <meta property="og:title" content="Leet Code" />
-    <meta property="twitter:title" content="Leet Code" />
+    <meta name="title" content="Leet Code BinarySearch Follow up" />
+    <meta property="og:title" content="Leet Code BinarySearch Follow up" />
+    <meta property="twitter:title" content="Leet Code BinarySearch Follow up" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Jasper, Camping, TCM">
     <link rel="shortcut icon" href="/img/favicon_2.ico">
 
-    <title>Leet Code-Jasper blog</title>
+    <title>Leet Code BinarySearch Follow up-Jasper blog</title>
 
-    <link rel="canonical" href="/post/leetcode-%E5%88%B7%E9%A1%8C%E6%A6%82%E5%BF%B5/">
+    <link rel="canonical" href="/post/leetcode-binarysearch-followup/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -167,8 +167,8 @@
                         </a>
                         
                     </div>
-                    <h1>Leet Code</h1>
-                    <h2 class="subheading">解題概念</h2>
+                    <h1>Leet Code BinarySearch Follow up</h1>
+                    <h2 class="subheading">Follow up questions on interview</h2>
                     <span class="meta">
                         Posted by 
                         
@@ -203,22 +203,130 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                <nav id="TableOfContents"></nav>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#leetcode-110-平衡二叉樹的後續問題">LeetCode 110. 平衡二叉樹的後續問題</a></li>
+  </ul>
+</nav>
                 
-                <p>
-  <img src="/img/Tech/leetcode/comcept.png" alt="">
-
-</p>
+                <h1 id="leetcode-110-平衡二叉樹的後續問題">LeetCode 110. 平衡二叉樹的後續問題</h1>
+<ol>
+<li>
+<p><strong>時間複雜度分析</strong>：</p>
+<ul>
+<li>你的解決方案的時間複雜度是多少？你能解釋一下為什麼嗎？
+<ul>
+<li>答：時間複雜度是 O(n)，其中 n 是樹中節點的數量。這是因為每個節點都會被訪問一次，以計算其高度並檢查其平衡狀態。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>空間複雜度分析</strong>：</p>
+<ul>
+<li>你的解決方案的空間複雜度是多少？你能解釋一下為什麼嗎？
+<ul>
+<li>答：空間複雜度是 O(h)，其中 h 是樹的高度。這是因為遞歸調用堆疊的深度等於樹的高度。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>迭代方法</strong>：</p>
+<ul>
+<li>你能使用堆疊而不是遞歸來實現 <code>isBalanced</code> 函數的迭代版本嗎？
+<ul>
+<li>答：可以，使用堆疊來模擬遞歸調用，並在每個節點處記錄其高度和平衡狀態。這樣可以避免遞歸調用的開銷。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>處理大型樹</strong>：</p>
+<ul>
+<li>你的解決方案在處理非常大的樹時表現如何？你能想到哪些優化方法來更有效地處理大型樹嗎？
+<ul>
+<li>答：對於非常大的樹，遞歸深度可能會導致堆疊溢出。可以使用迭代方法來避免這個問題。此外，可以在每個節點處存儲子樹高度，以減少重複計算。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>邊界情況</strong>：</p>
+<ul>
+<li>在測試你的解決方案時，你應該考慮哪些邊界情況？你的解決方案如何處理這些邊界情況？
+<ul>
+<li>答：應考慮的邊界情況包括空樹、只有一個節點的樹、完全平衡的樹和極度不平衡的樹。解決方案應該能夠正確處理這些情況，並返回正確的平衡狀態。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>修改樹結構</strong>：</p>
+<ul>
+<li>如果允許你更改樹節點的結構以存儲額外的信息（例如子樹的高度），你會如何修改你的解決方案？
+<ul>
+<li>答：可以在每個節點處添加一個屬性來存儲子樹的高度。這樣可以在計算平衡狀態時避免重複計算高度，提高效率。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>平衡樹構建</strong>：</p>
+<ul>
+<li>你能寫一個函數，從一個排序數組構建一個平衡二叉樹嗎？
+<ul>
+<li>答：可以，使用二分法將排序數組分成左右兩部分，遞歸地構建左右子樹，並將中間元素作為根節點。這樣可以保證構建的樹是平衡的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>與其他樹屬性的比較</strong>：</p>
+<ul>
+<li>平衡二叉樹的概念與其他樹屬性（例如完全二叉樹或滿二叉樹）有何不同？
+<ul>
+<li>答：平衡二叉樹要求每個節點的左右子樹高度差不超過1。完全二叉樹要求每層節點都滿，除了最後一層。滿二叉樹要求每個節點都有兩個子節點或沒有子節點。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>現實應用</strong>：</p>
+<ul>
+<li>你能想到哪些現實應用需要檢查二叉樹是否平衡嗎？
+<ul>
+<li>答：在數據庫索引、內存管理和遊戲開發中，平衡二叉樹可以提高查找、插入和刪除操作的效率。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>替代定義</strong>：</p>
+<ul>
+<li>當前平衡樹的定義是基於左右子樹高度差異的。你能想到平衡樹的其他定義嗎？你會如何修改你的解決方案以適應這些替代定義？
+<ul>
+<li>答：另一種平衡樹的定義是紅黑樹，它要求每個節點都有顏色屬性，並且滿足特定的平衡條件。可以修改解決方案來檢查這些條件，而不是僅僅檢查高度差異。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
 
                 <hr>
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/leetcode-array-prefixsums/" data-toggle="tooltip" data-placement="top" title="Leet Code DFS">&larr;
+                        <a href="/post/hugo_website_deploy/" data-toggle="tooltip" data-placement="top" title="Hugo Website deploy on FireBase via GitHub CI">&larr;
                             Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/post/leetcode-binarysearch/" data-toggle="tooltip" data-placement="top" title="Leet Code Binary Search">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
