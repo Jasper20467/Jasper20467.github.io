@@ -1,7 +1,6 @@
 ---
-title:       "Leet Code DFS"
-subtitle:    "Q724. Find Pivot Index"
-description: "Prefix Sum"
+title:       "Leet Code Array-PrefixSums"
+subtitle:    "Prefix Sum"
 date:        2024-10-23
 author: Jasper
 published: true

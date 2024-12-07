@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Jasper Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="/img/home-sun-raise2.png">
+    <meta property="twitter:image" content="/img/home-sun-raise2.png" />
+    
+
+    
+    <meta name="title" content="Leet Code Binary Search" />
+    <meta property="og:title" content="Leet Code Binary Search" />
+    <meta property="twitter:title" content="Leet Code Binary Search" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Jasper, Camping, TCM">
+    <link rel="shortcut icon" href="/img/favicon_2.ico">
+
+    <title>Leet Code Binary Search-Jasper blog</title>
+
+    <link rel="canonical" href="/post/leetcode-binarysearch/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jasper Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/life">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/Tech/LeetCode/home.png')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/python" title="Python">
+                            Python
+                        </a>
+                        
+                        <a class="tag" href="/tags/leetcode" title="LeetCode">
+                            LeetCode
+                        </a>
+                        
+                    </div>
+                    <h1>Leet Code Binary Search</h1>
+                    <h2 class="subheading">堆疊 vs 遞迴</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Jasper
+                         
+                        on 
+                        Wednesday, October 23, 2024
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#遞迴和堆疊的關係">遞迴和堆疊的關係</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                
+                <h1 id="遞迴和堆疊的關係">遞迴和堆疊的關係</h1>
+<p>在演算法中，使用堆疊（stack）和使用遞迴（recursion）有著密切的關聯，因為遞迴本質上是使用系統堆疊來管理函數調用。以下是它們之間的差別和關聯：</p>
+<h3 id="差別">差別</h3>
+<ol>
+<li>
+<p><strong>實現方式</strong>：</p>
+<ul>
+<li><strong>遞迴</strong>：通過函數自我調用來實現。每次遞迴調用都會在系統堆疊中創建一個新的函數調用框架。</li>
+<li><strong>堆疊</strong>：通過顯式地使用數據結構（如列表或棧）來模擬遞迴調用過程。</li>
+</ul>
+</li>
+<li>
+<p><strong>控制權</strong>：</p>
+<ul>
+<li><strong>遞迴</strong>：由系統自動管理函數調用和返回，開發者不需要手動管理堆疊。</li>
+<li><strong>堆疊</strong>：開發者需要手動管理堆疊的推入（push）和彈出（pop）操作。</li>
+</ul>
+</li>
+<li>
+<p><strong>可讀性</strong>：</p>
+<ul>
+<li><strong>遞迴</strong>：代碼通常更簡潔和易讀，特別是對於自然遞迴問題（如樹遍歷、分治算法）。</li>
+<li><strong>堆疊</strong>：代碼可能更複雜，但更靈活，特別是在需要避免遞迴深度限制的情況下。</li>
+</ul>
+</li>
+</ol>
+<h3 id="關聯">關聯</h3>
+<ol>
+<li>
+<p><strong>等價性</strong>：</p>
+<ul>
+<li>遞迴和堆疊在功能上是等價的。任何遞迴算法都可以轉換為使用顯式堆疊的迭代算法，反之亦然。</li>
+</ul>
+</li>
+<li>
+<p><strong>堆疊模擬遞迴</strong>：</p>
+<ul>
+<li>遞迴調用過程中，每次調用都會將當前狀態（如變量值和返回地址）推入系統堆疊。這與顯式使用堆疊來保存狀態並進行迭代處理的過程相同。</li>
+</ul>
+</li>
+<li>
+<p><strong>性能考量</strong>：</p>
+<ul>
+<li>遞迴的性能取決於系統堆疊的深度限制和管理開銷。對於深度較大的遞迴，可能會導致堆疊溢出。</li>
+<li>使用顯式堆疊可以避免系統堆疊的深度限制，並且在某些情況下可以更有效地管理內存。</li>
+</ul>
+</li>
+</ol>
+<h3 id="示例">示例</h3>
+<p>以下是使用遞迴和堆疊實現二叉樹前序遍歷的示例：</p>
+<p><strong>遞迴實現</strong>：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ff79c6">def</span> <span style="color:#50fa7b">preorder_recursive</span>(node):
+    <span style="color:#ff79c6">if</span> node:
+        <span style="color:#8be9fd;font-style:italic">print</span>(node<span style="color:#ff79c6">.</span>val)
+        preorder_recursive(node<span style="color:#ff79c6">.</span>left)
+        preorder_recursive(node<span style="color:#ff79c6">.</span>right)
+
+
+<span style="color:#ff79c6">def</span> <span style="color:#50fa7b">preorder_stack</span>(root):
+    <span style="color:#ff79c6">if</span> <span style="color:#ff79c6">not</span> root:
+        <span style="color:#ff79c6">return</span> 
+    stack <span style="color:#ff79c6">=</span> [root]
+    <span style="color:#ff79c6">while</span> stack:
+        node <span style="color:#ff79c6">=</span> stack<span style="color:#ff79c6">.</span>pop()
+        <span style="color:#8be9fd;font-style:italic">print</span>(node<span style="color:#ff79c6">.</span>val)
+        <span style="color:#ff79c6">if</span> node<span style="color:#ff79c6">.</span>left:
+            stack<span style="color:#ff79c6">.</span>append(node<span style="color:#ff79c6">.</span>left)
+        <span style="color:#ff79c6">if</span> node<span style="color:#ff79c6">.</span>right:
+            stack<span style="color:#ff79c6">.</span>append(node<span style="color:#ff79c6">.</span>right)
+
+</code></pre></div><h3 id="總結">總結</h3>
+<ul>
+<li><strong>遞迴：</strong> 簡潔、易讀，但受限於系統堆疊深度。</li>
+<li><strong>堆疊：</strong> 靈活、可控，但代碼較複雜，適合處理深度較大的問題。</li>
+</ul>
+
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/leetcode-binarysearch-followup/" data-toggle="tooltip" data-placement="top" title="Leet Code BinarySearch Follow up">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/leetcode-dfs/" data-toggle="tooltip" data-placement="top" title="Leet Code BFS / DFS">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/book" title="book">
+                            book
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/camping" title="camping">
+                            camping
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/csharp" title="csharp">
+                            csharp
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/django" title="django">
+                            django
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/hugo" title="hugo">
+                            hugo
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/leetcode" title="leetcode">
+                            leetcode
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/python" title="python">
+                            python
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href=""></a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                    
+                    <li>
+                        <a href="mailto:farng20467@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://linkedin.com/in/fang-jian-hua-5b0906aa">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Jasper Blog 2024
+                    <br>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

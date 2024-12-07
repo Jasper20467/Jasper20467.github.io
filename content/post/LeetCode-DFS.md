@@ -1,7 +1,6 @@
 ---
-title:       "Leet Code DFS"
-subtitle:    "Q39 Combination Sum"
-description: "backtrack and dfs"
+title:       "Leet Code BFS / DFS"
+subtitle:    "BFS vs. DFS in Flood Fill Algorithm"
 date:        2024-10-23
 author: Jasper
 published: true
@@ -10,15 +9,81 @@ tags:        ["Python", "LeetCode"]
 categories:  ["Tech" ]
 ---
 
-## Problem
+## BFS vs. DFS in Flood Fill Algorithm
 
-[Q39_Combination_Sum](https://leetcode.com/problems/combination-sum/description/)
+### Breadth-First Search (BFS)
+- **Approach:**
+  - BFS uses a queue and explores all neighbors at the present depth level before moving on to nodes at the next depth level.
+- **Advantages:**
+  - Can be more memory-efficient if the tree/graph is very deep but not very wide.
+  - Guarantees the shortest path in an unweighted graph.
+- **Disadvantages:**
+  - Can consume more memory if the graph is very wide.
 
+### Depth-First Search (DFS)
+- **Approach:**
+  - DFS uses a stack (or recursion) and explores as far as possible along each branch before backtracking.
+- **Advantages:**
+  - Can be more memory-efficient if the tree/graph is very wide but not very deep.
+  - Can be easier to implement using recursion.
+- **Disadvantages:**
+  - Can consume more memory if the graph is very deep due to the recursion stack.
 
-## Reference: 
+### Example Implementation of BFS for Flood Fill
+```python
 
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        m = len(image)
+        n = len(image[0])
+        
+        if m == 0 or n == 0:
+            return image
+        
+        originalColor = image[sr][sc]
+        if originalColor == color:
+            return image
+        
+        queue = [(sr, sc)]
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        
+        while queue:
+            x, y = queue.pop(0)
+            if image[x][y] == originalColor:
+                image[x][y] = color
+                for dx, dy in directions:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < m and 0 <= ny < n and image[nx][ny] == originalColor:
+                        queue.append((nx, ny))
+        
+        return image
+```
+### Example Implementation of DFS for Flood Fill
+```python
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        m = len(image)
+        n = len(image[0])
+        
+        if m == 0 or n == 0:
+            return image
+        
+        originalColor = image[sr][sc]
+        if originalColor == color:
+            return image
+        
+        def dfs(x, y):
+            if image[x][y] == originalColor:
+                image[x][y] = color
+                for dx, dy in directions:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < m and 0 <= ny < n:
+                        dfs(nx, ny)
+        
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        dfs(sr, sc)
+        
+        return image
 
-[演算法](https://medium.com/@ralph-tech/%E6%BC%94%E7%AE%97%E6%B3%95%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E5%9B%9E%E6%BA%AF%E6%B3%95-backtracking-%E5%88%86%E6%94%AF%E5%AE%9A%E7%95%8C%E6%B3%95-branch-and-bound-29165391c377)
-
-[DFS Python實作](https://ithelp.ithome.com.tw/articles/10286451)
+```
 
